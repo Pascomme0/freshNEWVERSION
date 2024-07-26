@@ -63,20 +63,21 @@ const products = [
 ];
 
 const ProductCard = ({ product }) => (
-        <Pressable className="  flex">
-            <StyledView className="p-4 bg-white  shadow-md mb-4 w-30">
-                <StyledImage
-                    source={product.image}
-                    className="w-full h-40 rounded-lg"
-                    resizeMode="cover"
-                />
-                <StyledText className="mt-2 text-[16px] font-bold">{product.name}</StyledText>
-                <StyledText style={({ color: 'rgba(0, 0, 0, 0.3)' })} className="mt-1  text-md font-bold">{product.unit}</StyledText>
-                <StyledText style={(
-                    { color: 'rgba(28, 163, 247, 1)' }
-                )} className="mt-1 text-lg">{product.price} FCFA</StyledText>
-            </StyledView>
-        </Pressable>
+    <Link href={`/Lavage/${product.id}`} asChild>
+    <Pressable className="flex">
+    <StyledView className="p-4 bg-white  shadow-md mb-4 w-35">
+            <StyledImage
+                source={product.image}
+                className="w-full h-40 rounded-lg"
+                resizeMode="cover"
+            />
+            <StyledText className="mt-2 text-[16px] font-bold">{product.name}</StyledText>
+            <StyledText style={{ color: 'rgba(28, 163, 247, 1)' }} className="mt-1 text-lg">
+                {product.price === 'sur devis' ? product.price : `${product.price} FCFA`}
+            </StyledText>
+        </StyledView>
+    </Pressable>
+</Link>
 );
 const LessiveDetail = () => (
     <ScrollView className='bg-white'>

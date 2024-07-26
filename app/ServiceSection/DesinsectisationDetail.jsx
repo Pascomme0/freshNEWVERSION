@@ -1,49 +1,69 @@
+// App.js
 import React from 'react';
 import { View, Text, Image, TouchableOpacity, ScrollView, SafeAreaView, Pressable } from 'react-native';
 import { styled } from 'nativewind';
-import douche from '../../assets/images/douche.jpg';
-import car from '../../assets/images/berline.jpg';
-import grosengin from '../../assets/images/berline.jpg';
-import chambre from '../../assets/images/4x4.jpg';
-import école from '../../assets/images/école.jpg';
-import entreprise from '../../assets/images/entreprise.jpg';
+import douche from '../../assets/images/douche.jpg'
+import salon from '../../assets/images/salon.jpg'
+import cuisine from '../../assets/images/cuisine.jpg'
+import chambre from '../../assets/images/chambre.jpg'
+import école from '../../assets/images/école.jpg'
+import entreprise from '../../assets/images/entreprise.jpg'
+
 
 import { FontAwesome } from '@expo/vector-icons';
 import { Link, useNavigation } from 'expo-router';
 
-// Définir les styles en utilisant NativeWind
+
 const StyledView = styled(View);
 const StyledText = styled(Text);
 const StyledImage = styled(Image);
 const StyledButton = styled(TouchableOpacity);
 
-const products = [
-
+const products = [ 
     {
         id: 1,
-        name:"Petite voiture",
-        price: 2500,
-        image: car,
+        name: "Douche",
+        price: 5000,
+        image: douche,
     },
     {
         id: 2,
-        name: "Berling",
-        price: 1000,
-        image: grosengin,
+        name: "Salon",
+        price: 2500,
+        image: salon,
     },
     {
         id: 3,
-        name: "4x4",
+        name: "Cuisine",
         price: 1000,
+        image: cuisine,
+    },
+    {
+        id: 4,
+        name: "Chambre",
+        price: 3500,
         image: chambre,
     },
+    {
+        id: 5,
+        name: "Ecole",
+        price: 'sur devis',
+        image: école,
+    },
+    {
+        id: 6,
+        name: "Entreprise",
+        price: 'sur devis',
+        image: entreprise,
+    }
 
 ];
 
 const ProductCard = ({ product }) => (
-    <Link push href='/' asChild className=''>
+
+    <Link href={`/Desinsectisation/${product.id}`} asChild>
         <Pressable className="flex">
-            <StyledView className="p-4 bg-white shadow-md mb-4 w-35">
+        <StyledView className="p-4 bg-white  shadow-md mb-4 w-35">
                 <StyledImage
                     source={product.image}
                     className="w-full h-40 rounded-lg"
@@ -56,12 +76,14 @@ const ProductCard = ({ product }) => (
             </StyledView>
         </Pressable>
     </Link>
-);
 
-const LavageLuxe = () => (
+        
+);
+const DesinsectisationDetail = () => (
+
     <ScrollView className='bg-white'>
+
         <View className='mb-10 '>
-        <Link push href='' asChild className=''>
             <StyledView style={{ flex: 1, flexWrap: 'wrap', flexDirection: 'row' }}>
                 {products.map(product => (
                     <StyledView key={product.id} style={{ width: '50%' }}>
@@ -69,11 +91,10 @@ const LavageLuxe = () => (
                     </StyledView>
                 ))}
             </StyledView>
-        </Link>
         </View>
         
-     
     </ScrollView>
+
 );
 
-export default LavageLuxe;
+export default DesinsectisationDetail;

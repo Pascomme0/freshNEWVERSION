@@ -78,7 +78,7 @@ const ProductCard = ({ product }) => (
 const MenageDetail = () => (
 
     <ScrollView className='bg-white'>
-        <View className=' '>
+        <View className='mb-10 '>
         <Link push href='/' asChild className=''>
             <StyledView style={{ flex: 1, flexWrap: 'wrap', flexDirection: 'row' }}>
                 {products.map(product => (

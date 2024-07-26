@@ -52,8 +52,9 @@ const products = [
 ];
 
 const ProductCard = ({ product }) => (
+    <Link href={`/Deratisation/${product.id}`} asChild>
     <Pressable className="flex">
-        <StyledView className="p-4 bg-white shadow-md mb-4 w-35">
+    <StyledView className="p-4 bg-white  shadow-md mb-4 w-35">
             <StyledImage
                 source={product.image}
                 className="w-full h-40 rounded-lg"
@@ -65,6 +66,7 @@ const ProductCard = ({ product }) => (
             </StyledText>
         </StyledView>
     </Pressable>
+</Link>
 );
 
 const DeratisationDetail = () => (
