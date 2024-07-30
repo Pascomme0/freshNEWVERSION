@@ -82,11 +82,14 @@ export default function ProductDetails() {
                             <Text className='text-white'>+</Text>
                         </Pressable>
                     </StyledView>
-                    <TouchableOpacity className="bg-blue-500 p-4 rounded-[5px] mt-4 j">
-                        <StyledText className="text-white text-center text-lg ">Ajouter au panier</StyledText>
-                    </TouchableOpacity>
+                   
                 </StyledView>
             </ScrollView>
+            <StyledView className="absolute bottom-0 w-full p-4 bg-white border-t border-gray-200">
+                <TouchableOpacity className="bg-blue-500 p-4 rounded-[5px]">
+                    <StyledText className="text-white text-center text-lg ">Commander le service</StyledText>
+                </TouchableOpacity>
+            </StyledView>
         </SafeAreaView>
     );
 }

@@ -71,7 +71,7 @@ const ProductList = () => (
         </StyledView>
       ))}
     </StyledView>
-    <Link href='/DetailsProd' asChild className=''>
+    <Link href='/category' asChild className=''>
             <Pressable className=" px-2 flex">
                 <View className=' flex flex-row items-center justify-end  pr-3 pb-12  '>
                     <Text className="text-green-600 text-[14px] font-semibold pr-2 ">Voir tout</Text> 

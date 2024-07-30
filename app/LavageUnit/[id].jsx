@@ -11,54 +11,71 @@ const StyledText = styled(Text);
 const StyledImage = styled(Image);
 
 
-import couette from '../../assets/images/couette.jpg'
-import rideaux from '../../assets/images/repair.png'
-import vet from '../../assets/images/vetement.jpg'
-import drap from '../../assets/images/drap.png'
+import fauteuil from '../../assets/images/fauteuil.jpg'
+import chaise from '../../assets/images/chaise.jpg'
+import matelat from '../../assets/images/matelat.jpg'
+import tapis from '../../assets/images/tapis.jpg'
+import petittapis from '../../assets/images/petittapis.jpg'
+import demenagement from '../../assets/images/demenagement.jpg'
 
 const products = [
     {
         id: 1,
-        name: "Lavage de vetements",
+        name: "Fauteuil",
         price: 5000,
-        image: vet,
-        unit: '10 vetements'
+        image: fauteuil,
+        rating: 4.6,
     },
     {
         id: 2,
-        name: "Lavage rideaux",
+        name: "Chaise",
         price: 2500,
-        image: rideaux,
-        unit: 'à l unité'
+        image: chaise,
+        rating: 4.6,
     },
     {
         id: 3,
-        name: "Lavage de drap",
+        name: "Matelas une place",
         price: 1000,
-        image: drap,
-        unit: 'à l unité'
+        image: matelat,
+         rating: 4.6,
     },
     {
         id: 4,
-        name: "Lavage de couette",
+        name: "Matelas deux places",
         price: 3500,
-        image: couette,
-        unit: 'à l unité'
-    },
+        image: matelat,
+         rating: 4.6,
+    },     
     {
-        id: 5,
-        name: "Drap",
-        price: 3500,
-        image: couette,
-        unit: 'à l unité'
-    },
-    {
-        id: 6,
-        name: "Coussin",
-        price: 3500,
-        image: couette,
-        unit: 'à l unité'
-    }
+    id: 5,
+    name: "Matelas trois places",
+    price: 8000,
+    image: matelat,
+     rating: 4.6,
+},
+{
+    id: 6,
+    name: "Tapis (petit)",
+    price: 1000,
+    image: petittapis,
+     rating: 4.6,
+},
+{
+    id: 7,
+    name: "Tapis (grand)",
+    price: 2000,
+    image: tapis,
+     rating: 4.6,
+},
+
+{
+    id: 8,
+    name: "aménagement",
+    price: 20000,
+    image: demenagement,
+     rating: 4.6,
+},
 
 ];
 
@@ -75,10 +92,6 @@ export default function ProductDetails() {
     const incrementQuantity = () => setQuantity(prevQuantity => prevQuantity + 1);
     const decrementQuantity = () => setQuantity(prevQuantity => Math.max(1, prevQuantity - 1));
 
-    const handleOrderService = () => {
-        router.push('/Lavage/CommandForm');
-    };
-
     return (
         <SafeAreaView className="flex-1 bg-white">
             <ScrollView className="bg-white">
@@ -89,14 +102,15 @@ export default function ProductDetails() {
                     >
                         <View className='rounded-full bg-slate-300 w-8 h-8 items-center justify-center'>
                             <FontAwesome name="angle-left" size={24} color="blue" />
-                        </View>
-                    </TouchableOpacity>
+                        </View>    
+                        </TouchableOpacity>
                     <StyledImage
                         source={product.image}
                         className="w-full h-80"
                         resizeMode="cover"
                     />
                 </View>
+
                 <StyledView className="p-4">
                     <StyledText className="text-gray-400 text-[16px] font-bold mb-2">Lavage à l'unité</StyledText>
                     <StyledText className="text-2xl font-bold ">{product.name}</StyledText>
@@ -120,13 +134,11 @@ export default function ProductDetails() {
                             <Text className='text-white'>+</Text>
                         </Pressable>
                     </StyledView>
-
+                   
                 </StyledView>
             </ScrollView>
-            <StyledView className="absolute bottom-0 w-full p-4 bg-white ">
-                <TouchableOpacity
-                    onPress={handleOrderService}
-                    className="bg-blue-500 p-4 rounded-[5px]">
+            <StyledView className="absolute bottom-0 w-full p-4 bg-white border-t border-gray-200">
+                <TouchableOpacity className="bg-blue-500 p-4 rounded-[5px]">
                     <StyledText className="text-white text-center text-lg ">Commander le service</StyledText>
                 </TouchableOpacity>
             </StyledView>

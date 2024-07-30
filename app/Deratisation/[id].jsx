@@ -4,7 +4,6 @@ import { useLocalSearchParams, useRouter } from 'expo-router';
 import { styled } from 'nativewind';
 import { FontAwesome } from '@expo/vector-icons';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import Back from '../../components/Back';
 
 const StyledView = styled(View);
 const StyledText = styled(Text);
@@ -38,27 +37,49 @@ export default function ProductDetails() {
     const incrementQuantity = () => setQuantity(prevQuantity => prevQuantity + 1);
     const decrementQuantity = () => setQuantity(prevQuantity => Math.max(1, prevQuantity - 1));
 
-    return (
-        <SafeAreaView className="flex-1 bg-white">
-            <ScrollView className="bg-white">
+    const handleOrderService = () => {
+        if (product.name === 'Ecole' || product.name === 'Entreprise') {
+            router.push('/../DevisCom'); // Remplacer par la route correcte pour la page de demande de devis
+        } else {
+            router.push('/../FormCom');
+        }
+    };
+
+    // Handle special cases for 'Ecole' and 'Entreprise'
+    const renderSpecialSection = (productName) => {
+        let title, image, description;
+
+        if (productName === 'Ecole') {
+            title = "Désinsectisation";
+            image = école;
+            description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
+        } else if (productName === 'Entreprise') {
+            title = "Dératisation";
+            image = entreprise;
+            description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
+        } else {
+            return null;
+        }
+
+        return (
+            <>
                 <View className="relative">
                     <TouchableOpacity
                         onPress={() => router.back()}
-                        className="absolute top-4 left-4 z-10  p-2 rounded-full flex justify-center items-center"
+                        className="absolute top-4 left-4 z-10 p-2 rounded-full flex justify-center items-center"
                     >
                         <View className='rounded-full bg-slate-300 w-8 h-8 items-center justify-center'>
                             <FontAwesome name="angle-left" size={24} color="blue" />
-                        </View>    
-                        </TouchableOpacity>
+                        </View>
+                    </TouchableOpacity>
                     <StyledImage
-                        source={product.image}
+                        source={image}
                         className="w-full h-80"
                         resizeMode="cover"
                     />
                 </View>
-
                 <StyledView className="p-4">
-                    <StyledText className="text-gray-400 text-[16px] font-bold mb-2">Desinsectisation</StyledText>
+                    <StyledText className="text-gray-400 text-[16px] font-bold mb-2">{title}</StyledText>
                     <StyledText className="text-2xl font-bold ">{product.name}</StyledText>
                     {product.rating && (
                         <Text className='text-lg text-yellow-500 '>
@@ -69,8 +90,8 @@ export default function ProductDetails() {
                         {typeof product.price === 'number' ? `${product.price} F` : product.price}
                     </StyledText>
                     <StyledText className="text-lg mb-4">Description du service</StyledText>
-                    <StyledText className="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</StyledText>
-                    <StyledText className="text-lg mb-2">Nombre de pièces</StyledText>
+                    <StyledText className="mb-4">{description}</StyledText>
+                    <StyledText className="text-lg mb-2">Nombre de rideaux</StyledText>
                     <StyledView className="flex-row items-center mb-4">
                         <Pressable onPress={decrementQuantity} className="bg-gray-200 p-2 rounded">
                             <Text>-</Text>
@@ -80,11 +101,70 @@ export default function ProductDetails() {
                             <Text className='text-white'>+</Text>
                         </Pressable>
                     </StyledView>
-                    <TouchableOpacity className="bg-blue-500 p-4 rounded-[5px] mt-4 j">
-                        <StyledText className="text-white text-center text-lg ">Ajouter au panier</StyledText>
-                    </TouchableOpacity>
                 </StyledView>
+            </>
+        );
+    };
+
+    return (
+        <SafeAreaView className="flex-1 bg-white">
+            <ScrollView className="bg-white">
+                {['Ecole', 'Entreprise'].includes(product.name) ? (
+                    renderSpecialSection(product.name)
+                ) : (
+                    <>
+                        <View className="relative">
+                            <TouchableOpacity
+                                onPress={() => router.back()}
+                                className="absolute top-4 left-4 z-10 p-2 rounded-full flex justify-center items-center"
+                            >
+                                <View className='rounded-full bg-slate-300 w-8 h-8 items-center justify-center'>
+                                    <FontAwesome name="angle-left" size={24} color="blue" />
+                                </View>
+                            </TouchableOpacity>
+                            <StyledImage
+                                source={product.image}
+                                className="w-full h-80"
+                                resizeMode="cover"
+                            />
+                        </View>
+                        <StyledView className="p-4">
+                            <StyledText className="text-gray-400 text-[16px] font-bold mb-2">Dératisation</StyledText>
+                            <StyledText className="text-2xl font-bold ">{product.name}</StyledText>
+                            {product.rating && (
+                                <Text className='text-lg text-yellow-500 '>
+                                    {`⭐`.repeat(Math.floor(product.rating))} ({product.rating})
+                                </Text>
+                            )}
+                            <StyledText className="text-xl text-black mb-4 mt-2">
+                                {typeof product.price === 'number' ? `${product.price} F` : product.price}
+                            </StyledText>
+                            <StyledText className="text-lg mb-4">Description du service</StyledText>
+                            <StyledText className="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</StyledText>
+                            <StyledText className="text-lg mb-2">Nombre de pièces</StyledText>
+                            <StyledView className="flex-row items-center mb-4">
+                                <Pressable onPress={decrementQuantity} className="bg-gray-200 p-2 rounded">
+                                    <Text>-</Text>
+                                </Pressable>
+                                <Text className="mx-4">{quantity}</Text>
+                                <Pressable onPress={incrementQuantity} className="bg-blue-500 p-2 rounded">
+                                    <Text className='text-white'>+</Text>
+                                </Pressable>
+                            </StyledView>
+                        </StyledView>
+                    </>
+                )}
             </ScrollView>
+            <StyledView className="absolute bottom-0 w-full p-4 bg-white border-t border-gray-200">
+                <TouchableOpacity
+                    className="bg-blue-500 p-4 rounded-[5px]"
+                    onPress={handleOrderService}
+                >
+                    <StyledText className="text-white text-center text-lg ">
+                        {['Ecole', 'Entreprise'].includes(product.name) ? 'Demander un devis' : 'Commander le service'}
+                    </StyledText>
+                </TouchableOpacity>
+            </StyledView>
         </SafeAreaView>
     );
 }

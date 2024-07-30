@@ -60,26 +60,26 @@ const products = [
 ];
 
 const ProductCard = ({ product }) => (
-        <Pressable className="  flex">
-            <StyledView className="p-4 bg-white  shadow-md mb-4 w-35">
-                <StyledImage
-                    source={product.image}
-                    className="w-full h-40 rounded-lg"
-                    resizeMode="cover"
-                />
-                <StyledText className="mt-2 text-[16px] font-bold">{product.name}</StyledText>
-                <StyledText style={{ color: 'rgba(28, 163, 247, 1)' }} className="mt-1 text-lg">
-                    {product.price === 'sur devis' ? product.price : `${product.price} FCFA`}
-                </StyledText>
-            </StyledView>
-        </Pressable>
+    <Link href={`/Menage/${product.id}`} asChild>
+    <Pressable className="flex">
+    <StyledView className="p-4 bg-white  shadow-md mb-4 w-35">
+            <StyledImage
+                source={product.image}
+                className="w-full h-40 rounded-lg"
+                resizeMode="cover"
+            />
+            <StyledText className="mt-2 text-[16px] font-bold">{product.name}</StyledText>
+            <StyledText style={{ color: 'rgba(28, 163, 247, 1)' }} className="mt-1 text-lg">
+                {product.price === 'sur devis' ? product.price : `${product.price} FCFA`}
+            </StyledText>
+        </StyledView>
+    </Pressable>
+</Link>
 
 );
 const MenageDetail = () => (
-
     <ScrollView className='bg-white'>
         <View className='mb-10 '>
-        <Link push href='/' asChild className=''>
             <StyledView style={{ flex: 1, flexWrap: 'wrap', flexDirection: 'row' }}>
                 {products.map(product => (
                     <StyledView key={product.id} style={{ width: '50%' }}>
@@ -87,11 +87,8 @@ const MenageDetail = () => (
                     </StyledView>
                 ))}
             </StyledView>
-        </Link>
         </View>
         
     </ScrollView>
-
 );
-
 export default MenageDetail;

@@ -10,54 +10,60 @@ const StyledView = styled(View);
 const StyledText = styled(Text);
 const StyledImage = styled(Image);
 
-
-import couette from '../../assets/images/couette.jpg'
-import rideaux from '../../assets/images/repair.png'
-import vet from '../../assets/images/vetement.jpg'
-import drap from '../../assets/images/drap.png'
-
+import douche from '../../assets/images/douche.jpg'
+import salon from '../../assets/images/salon.jpg'
+import cuisine from '../../assets/images/cuisine.jpg'
+import chambre from '../../assets/images/chambre.jpg'
+import école from '../../assets/images/école.jpg'
+import entreprise from '../../assets/images/entreprise.jpg'
 const products = [
     {
         id: 1,
-        name: "Lavage de vetements",
+        name: "Douche",
         price: 5000,
-        image: vet,
-        unit: '10 vetements'
+        image: douche,
+        rating: 4.6,
+
     },
     {
         id: 2,
-        name: "Lavage rideaux",
+        name: "Salon",
         price: 2500,
-        image: rideaux,
-        unit: 'à l unité'
+        image: salon,
+             rating: 4.6,
+
     },
     {
         id: 3,
-        name: "Lavage de drap",
+        name: "Cuisine",
         price: 1000,
-        image: drap,
-        unit: 'à l unité'
+        image: cuisine,
+             rating: 4.6,
+
     },
     {
         id: 4,
-        name: "Lavage de couette",
+        name: "Chambre",
         price: 3500,
-        image: couette,
-        unit: 'à l unité'
+        image: chambre,
+             rating: 4.6,
+
     },
     {
         id: 5,
-        name: "Drap",
-        price: 3500,
-        image: couette,
-        unit: 'à l unité'
+        name: "Ecole",
+        price: 'sur devis',
+             rating: 4.6,
+
+        image: école,
     },
     {
         id: 6,
-        name: "Coussin",
-        price: 3500,
-        image: couette,
-        unit: 'à l unité'
+        name: "Entreprise",
+        price: 'sur devis',
+        image: entreprise,
+             rating: 4.6,
+
     }
 
 ];
@@ -76,7 +82,7 @@ export default function ProductDetails() {
     const decrementQuantity = () => setQuantity(prevQuantity => Math.max(1, prevQuantity - 1));
 
     const handleOrderService = () => {
-        router.push('/Lavage/CommandForm');
+        router.push('/../FormCom');
     };
 
     return (
@@ -89,16 +95,17 @@ export default function ProductDetails() {
                     >
                         <View className='rounded-full bg-slate-300 w-8 h-8 items-center justify-center'>
                             <FontAwesome name="angle-left" size={24} color="blue" />
-                        </View>
-                    </TouchableOpacity>
+                        </View>    
+                        </TouchableOpacity>
                     <StyledImage
                         source={product.image}
                         className="w-full h-80"
                         resizeMode="cover"
                     />
                 </View>
+
                 <StyledView className="p-4">
-                    <StyledText className="text-gray-400 text-[16px] font-bold mb-2">Lavage à l'unité</StyledText>
+                    <StyledText className="text-gray-400 text-[16px] font-bold mb-2">Ménage</StyledText>
                     <StyledText className="text-2xl font-bold ">{product.name}</StyledText>
                     {product.rating && (
                         <Text className='text-lg text-yellow-500 '>
@@ -120,16 +127,15 @@ export default function ProductDetails() {
                             <Text className='text-white'>+</Text>
                         </Pressable>
                     </StyledView>
-
+                   
                 </StyledView>
             </ScrollView>
-            <StyledView className="absolute bottom-0 w-full p-4 bg-white ">
-                <TouchableOpacity
-                    onPress={handleOrderService}
-                    className="bg-blue-500 p-4 rounded-[5px]">
-                    <StyledText className="text-white text-center text-lg ">Commander le service</StyledText>
+            <StyledView className="absolute bottom-0 w-full p-4 bg-white border-t border-gray-200">
+                <TouchableOpacity onPress={handleOrderService} className="bg-blue-500 p-4 rounded-[5px]">
+                    <StyledText className="text-white text-center text-lg ">Ajouter au panier</StyledText>
                 </TouchableOpacity>
             </StyledView>
         </SafeAreaView>
+        
     );
 }

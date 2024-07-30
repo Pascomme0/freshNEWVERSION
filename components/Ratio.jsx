@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, Image ,Pressable} from 'react-native';
+import { View, Text, TouchableOpacity, Image, Pressable, StyleSheet } from 'react-native';
 import { styled } from 'nativewind';
 import { Link } from 'expo-router';
 import { FontAwesome5 } from '@expo/vector-icons';
@@ -15,8 +15,7 @@ export default function Ratio() {
     ];
 
     return (
-
-        <View className="p-4">
+        <View style={styles.container}>
             <Text className="text-[18px] mb-2">Moyen de paiement</Text>
             <View className="flex-row space-x-12 ">
                 {options.map((option) => (
@@ -61,14 +60,41 @@ export default function Ratio() {
                 </View>
                 <Text className='text-[16px] leading-6 font-bold '>Paiement éléctronique par {'\n'} wave unique </Text>
             </View>
-            <View className='mt-8 mx-2 '  >
+            <View style={styles.buttonContainer}>
                 <Link push href="/paiement/Checkout1" asChild>
-                    <Button className=' '>
-                        <ButtonText className=' text-center pl-28 text-[18px] font-bold '>Valider ma commande</ButtonText>
-                    </Button>
+                    <TouchableOpacity  style={styles.button}>
+                        <Text style={styles.buttonText}>Valider ma commande</Text>
+                    </TouchableOpacity>
                 </Link>
             </View>
         </View>
     );
 }
 
+const styles = StyleSheet.create({
+    container: {
+        padding: 16,
+    },
+    buttonContainer: {
+        position: 'absolute',
+        bottom: 16,
+        left: 16,
+        right: 16,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    button: {
+        backgroundColor: '#2BBB68',
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 16,
+        width : '85%',
+        borderRadius: 8,
+        top:240,
+    },
+    buttonText: {
+        color: 'white',
+        fontSize: 18,
+        fontWeight: 'bold',
+    },
+});

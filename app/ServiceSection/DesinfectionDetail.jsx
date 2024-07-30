@@ -57,21 +57,21 @@ const products = [
 ];
 
 const ProductCard = ({ product }) => (
-    <Link push href='/' asChild className=''>
-        <Pressable className="flex">
-            <StyledView className="p-4 bg-white shadow-md mb-4 w-35">
-                <StyledImage
-                    source={product.image}
-                    className="w-full h-40 rounded-lg"
-                    resizeMode="cover"
-                />
-                <StyledText className="mt-2 text-[16px] font-bold">{product.name}</StyledText>
-                <StyledText style={{ color: 'rgba(28, 163, 247, 1)' }} className="mt-1 text-lg">
-                    {product.price === 'sur devis' ? product.price : `${product.price} FCFA`}
-                </StyledText>
-            </StyledView>
-        </Pressable>
-    </Link>
+    <Link href={`/Desinfectionn/${product.id}`} asChild>
+    <Pressable className="flex">
+    <StyledView className="p-4 bg-white  shadow-md mb-4 w-35">
+            <StyledImage
+                source={product.image}
+                className="w-full h-40 rounded-lg"
+                resizeMode="cover"
+            />
+            <StyledText className="mt-2 text-[16px] font-bold">{product.name}</StyledText>
+            <StyledText style={{ color: 'rgba(28, 163, 247, 1)' }} className="mt-1 text-lg">
+                {product.price === 'sur devis' ? product.price : `${product.price} FCFA`}
+            </StyledText>
+        </StyledView>
+    </Pressable>
+</Link>
 );
 
 const DesinfectionDetail = () => (

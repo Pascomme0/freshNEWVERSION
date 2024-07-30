@@ -4,6 +4,8 @@ import { styled } from 'nativewind';
 import prod from '../assets/images/prod.png';
 import { useRouter } from 'expo-router';
 import { FontAwesome } from '@expo/vector-icons';
+const StyledImage = styled(Image);
+
 
 
 const DétailsProd = () => {
@@ -18,16 +20,29 @@ const DétailsProd = () => {
       setQuantity(prevQuantity => prevQuantity - 1);
     }
   };
+
+  const handleOrderService = () => {
+    router.push('/(tabs)/shop');
+};
+
   return (
     <View className="flex-1 bg-white">
-      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-        <View className="h-2/5">
-          <Image
-            source={prod}
-            className="w-[100%] h-full"
-            resizeMode="object-cover"
-          />
-        </View>
+      <ScrollView className='bg-white' contentContainerStyle={{ flexGrow: 1 }}>
+      <View className="relative bg-white">
+                    <TouchableOpacity
+                        onPress={() => router.back()}
+                        className="absolute top-4 left-4 z-10  p-2 rounded-full flex justify-center items-center"
+                    >
+                        <View className='rounded-full bg-slate-300 w-8 h-8 items-center justify-center'>
+                            <FontAwesome name="angle-left" size={24} color="blue" />
+                        </View>    
+                    </TouchableOpacity>
+                    <StyledImage
+                        source={prod}
+                        className="w-full h-80"
+                        resizeMode="cover"
+                    />
+                </View>
         <View className="p-4 flex-1">
           <Text className="text-xl font-bold">Spray Toilettes</Text>
           <View className="flex-row items-center my-2">
@@ -48,7 +63,8 @@ const DétailsProd = () => {
               <Text className="text-xl">+</Text>
             </TouchableOpacity>
           </View>
-          <TouchableOpacity className="bg-green-500 mt-2 py-3 px-4 rounded-md items-center">
+          
+          <TouchableOpacity onPress={handleOrderService} className="bg-green-500 mt-2 py-3 px-4 rounded-md items-center">
             <Text className="text-white text-lg">Ajouter au panier</Text>
           </TouchableOpacity>
         </View>

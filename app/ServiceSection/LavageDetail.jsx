@@ -82,7 +82,7 @@ const products = [
 ];
 
 const ProductCard = ({ product }) => (
-    <Link href={`/Lavage/${product.id}`} asChild>
+    <Link href={`/LavageUnit/${product.id}`} asChild>
         <Pressable className="flex">
         <StyledView className="p-4 bg-white  shadow-md mb-4 w-35">
                 <StyledImage
