@@ -68,7 +68,7 @@ const FormCom = () => {
           <StyledText className="font-bold mb-2">Date de ramassage</StyledText>
           <TouchableOpacity onPress={showDatePicker}>
             <TextInput
-              className="h-12 border border-gray-300 p-2 rounded shadow-sm"
+              className="text-black h-12 border border-gray-300 p-2 rounded shadow-sm"
               placeholder="Date de ramassage"
               value={selectedDate}
               editable={false}
@@ -86,12 +86,18 @@ const FormCom = () => {
           <StyledText className="font-bold mb-2">Heure de ramassage</StyledText>
           <TouchableOpacity onPress={() => showTimePicker('pickup')}>
             <TextInput
-              className="h-12 border border-gray-300 p-2 rounded shadow-sm"
+              className="text-black h-12 border border-gray-300 p-2 rounded shadow-sm"
               placeholder="Heure de ramassage"
               value={selectedTime.pickup}
               editable={false}
             />
           </TouchableOpacity>
+          <DateTimePickerModal
+            isVisible={isTimePickerVisible}
+            mode="time"
+            onConfirm={handleTimeConfirm}
+            onCancel={hideTimePicker}
+          />
         </View>
 
         <View className="mb-4">
@@ -100,13 +106,10 @@ const FormCom = () => {
             className="h-12 border border-gray-300 p-2 rounded shadow-sm"
             placeholder="Votre localisation"
             multiline
-   
           />
         </View>
-
-       
       </ScrollView>
-      <StyledView className="absolute bottom-0 w-full p-4 bg-white  shadow-lg">
+      <StyledView className="absolute bottom-0 w-full p-4 bg-white shadow-lg">
         <TouchableOpacity 
           className="bg-blue-500 p-4 rounded-lg"
           onPress={handleOrderService}

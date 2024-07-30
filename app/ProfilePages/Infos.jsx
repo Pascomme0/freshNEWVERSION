@@ -3,13 +3,19 @@ import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import Back from '../../components/Back'
 import Formulaire from '../../components/Formulaire'
+import { ScrollView } from 'react-native'
 
 
 const Infos = () => {
   return (
+
+  
     <SafeAreaView>
         <Back title = "Informations personnelles"/>   
+        <ScrollView>
         <Formulaire/>
+
+        </ScrollView>
     </SafeAreaView>
   )
 }

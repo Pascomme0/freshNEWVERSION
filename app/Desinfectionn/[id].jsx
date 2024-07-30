@@ -70,7 +70,11 @@ export default function ProductDetails() {
     const decrementQuantity = () => setQuantity(prevQuantity => Math.max(1, prevQuantity - 1));
 
     const handleOrderService = () => {
-        router.push('/../FormCom');
+        if (product.name === 'Ecole' || product.name === 'Entreprise') {
+            router.push('/../DevisCom'); // Remplacer par la route correcte pour la page de demande de devis
+        } else {
+            router.push('/../FormCom');
+        }
     };
 
     return (
@@ -79,12 +83,12 @@ export default function ProductDetails() {
                 <View className="relative">
                     <TouchableOpacity
                         onPress={() => router.back()}
-                        className="absolute top-4 left-4 z-10  p-2 rounded-full flex justify-center items-center"
+                        className="absolute top-4 left-4 z-10 p-2 rounded-full flex justify-center items-center"
                     >
                         <View className='rounded-full bg-slate-300 w-8 h-8 items-center justify-center'>
                             <FontAwesome name="angle-left" size={24} color="blue" />
-                        </View>    
-                        </TouchableOpacity>
+                        </View>
+                    </TouchableOpacity>
                     <StyledImage
                         source={product.image}
                         className="w-full h-80"
@@ -119,8 +123,10 @@ export default function ProductDetails() {
                 </StyledView>
             </ScrollView>
             <StyledView className="absolute bottom-0 w-full p-4 bg-white border-t border-gray-200">
-                <TouchableOpacity onPress={handleOrderService } className="bg-blue-500 p-4 rounded-[5px]">
-                    <StyledText className="text-white text-center text-lg ">Commander le service</StyledText>
+                <TouchableOpacity onPress={handleOrderService} className="bg-blue-500 p-4 rounded-[5px]">
+                    <StyledText className="text-white text-center text-lg ">
+                        {['Ecole', 'Entreprise'].includes(product.name) ? 'Demander un devis' : 'Commander le service'}
+                    </StyledText>
                 </TouchableOpacity>
             </StyledView>
         </SafeAreaView>

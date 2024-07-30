@@ -10,62 +10,20 @@ const StyledView = styled(View);
 const StyledText = styled(Text);
 const StyledImage = styled(Image);
 
-import douche from '../../assets/images/douche.jpg'
-import salon from '../../assets/images/salon.jpg'
-import cuisine from '../../assets/images/cuisine.jpg'
-import chambre from '../../assets/images/chambre.jpg'
-import école from '../../assets/images/école.jpg'
-import entreprise from '../../assets/images/entreprise.jpg'
+import douche from '../../assets/images/douche.jpg';
+import salon from '../../assets/images/salon.jpg';
+import cuisine from '../../assets/images/cuisine.jpg';
+import chambre from '../../assets/images/chambre.jpg';
+import école from '../../assets/images/école.jpg';
+import entreprise from '../../assets/images/entreprise.jpg';
+
 const products = [
-    {
-        id: 1,
-        name: "Douche",
-        price: 5000,
-        image: douche,
-        rating: 4.6,
-
-    },
-    {
-        id: 2,
-        name: "Salon",
-        price: 2500,
-        image: salon,
-             rating: 4.6,
-
-    },
-    {
-        id: 3,
-        name: "Cuisine",
-        price: 1000,
-        image: cuisine,
-             rating: 4.6,
-
-    },
-    {
-        id: 4,
-        name: "Chambre",
-        price: 3500,
-        image: chambre,
-             rating: 4.6,
-
-    },
-    {
-        id: 5,
-        name: "Ecole",
-        price: 'sur devis',
-             rating: 4.6,
-
-        image: école,
-    },
-    {
-        id: 6,
-        name: "Entreprise",
-        price: 'sur devis',
-        image: entreprise,
-             rating: 4.6,
-
-    }
-
+    { id: 1, name: "Douche", price: 5000, image: douche, rating: 4.6 },
+    { id: 2, name: "Salon", price: 2500, image: salon, rating: 4.6 },
+    { id: 3, name: "Cuisine", price: 1000, image: cuisine, rating: 4.6 },
+    { id: 4, name: "Chambre", price: 3500, image: chambre, rating: 4.6 },
+    { id: 5, name: "Ecole", price: 'sur devis', image: école, rating: 4.6 },
+    { id: 6, name: "Entreprise", price: 'sur devis', image: entreprise, rating: 4.6 }
 ];
 
 export default function ProductDetails() {
@@ -82,7 +40,11 @@ export default function ProductDetails() {
     const decrementQuantity = () => setQuantity(prevQuantity => Math.max(1, prevQuantity - 1));
 
     const handleOrderService = () => {
-        router.push('/../FormCom');
+        if (product.name === 'Ecole' || product.name === 'Entreprise') {
+            router.push('/../MenageForm'); // Remplacer par la route correcte pour la page de demande de devis
+        } else {
+            router.push('/../FormCom');
+        }
     };
 
     return (
@@ -96,7 +58,7 @@ export default function ProductDetails() {
                         <View className='rounded-full bg-slate-300 w-8 h-8 items-center justify-center'>
                             <FontAwesome name="angle-left" size={24} color="blue" />
                         </View>    
-                        </TouchableOpacity>
+                    </TouchableOpacity>
                     <StyledImage
                         source={product.image}
                         className="w-full h-80"
@@ -127,15 +89,18 @@ export default function ProductDetails() {
                             <Text className='text-white'>+</Text>
                         </Pressable>
                     </StyledView>
-                   
                 </StyledView>
             </ScrollView>
             <StyledView className="absolute bottom-0 w-full p-4 bg-white border-t border-gray-200">
-                <TouchableOpacity onPress={handleOrderService} className="bg-blue-500 p-4 rounded-[5px]">
-                    <StyledText className="text-white text-center text-lg ">Ajouter au panier</StyledText>
+                <TouchableOpacity 
+                    onPress={handleOrderService}
+                    className="bg-blue-500 p-4 rounded-[5px]"
+                >
+                    <StyledText className="text-white text-center text-lg">
+                        {['Ecole', 'Entreprise'].includes(product.name) ? 'Demander un devis' : 'Commander le service'}
+                    </StyledText>
                 </TouchableOpacity>
             </StyledView>
         </SafeAreaView>
-        
     );
 }

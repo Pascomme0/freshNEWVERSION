@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, ScrollView, Platform, KeyboardAvoidingView, SafeAreaView, StyleSheet } from 'react-native';
 import { styled } from 'nativewind';
 import { Picker } from '@react-native-picker/picker';
 import Back from '../../components/Back';
+import DateTimePickerModal from 'react-native-modal-datetime-picker';
 
 const Container = styled(View);
 const Label = styled(Text);
@@ -22,6 +23,46 @@ const Contrats = () => {
   const [frequence, setFrequence] = useState('tous les jours');
   const [dortChezVous, setDortChezVous] = useState('');
 
+  // State for DateTimePickerModal
+  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+  const [isTimePickerVisible, setTimePickerVisibility] = useState(false);
+  const [pickerField, setPickerField] = useState('');
+
+  const showDatePicker = (field) => {
+    setPickerField(field);
+    setDatePickerVisibility(true);
+  };
+
+  const hideDatePicker = () => {
+    setDatePickerVisibility(false);
+  };
+
+  const handleDateConfirm = (date) => {
+    if (pickerField === 'dateDebut') {
+      setDateDebut(date.toDateString());
+    }
+    hideDatePicker();
+  };
+
+  const showTimePicker = (field) => {
+    setPickerField(field);
+    setTimePickerVisibility(true);
+  };
+
+  const hideTimePicker = () => {
+    setTimePickerVisibility(false);
+  };
+
+  const handleTimeConfirm = (date) => {
+    const hours = date.getHours().toString().padStart(2, '0');
+    const minutes = date.getMinutes().toString().padStart(2, '0');
+    const time = `${hours}:${minutes}`;
+    if (pickerField === 'heure') {
+      setHeure(time);
+    }
+    hideTimePicker();
+  };
+
   const handleSubmit = () => {
     console.log({
       description,
@@ -36,95 +77,140 @@ const Contrats = () => {
   };
 
   return (
-    <Container className="flex-1 bg-white">
-      <Back title='Contrat' />
-      <ScrollView contentContainerStyle={{ flexGrow: 1, paddingBottom: 100 }}>
-        <Container className="p-4">
-          <Label className="text-md text-left font-bold mb-4">Description des tâches de la Nounou</Label>
-          <Input
-            className="border p-2 mb-4 w-full rounded"
-            placeholder="Ma nounou devra faire la lessive, s'occuper des enfants..."
-            value={description}
-            onChangeText={setDescription}
-            multiline
-            numberOfLines={4}
-          />
-          <Label className="text-md text-left font-bold mb-4">Nombre d'enfant</Label>
-          <Input
-            className="border p-2 mb-4 w-full rounded"
-            placeholder="Nombre d'enfants"
-            keyboardType="phone-pad"
-            value={nombreEnfants}
-            onChangeText={setNombreEnfants}
-          />
-          <Label className="text-md text-left font-bold mb-4">Durée de service</Label>
-          <Picker
-            selectedValue={frequence}
-            style={{ height: 50, width: '100%' }}
-            onValueChange={(itemValue) => setFrequence(itemValue)}
-          >
-            <Picker.Item label="Tous les jours" value="tous les jours" />
-            <Picker.Item label="Tous les week-ends" value="tous les week end" />
-            <Picker.Item label="Tous les 15 jours" value="tous les 15 jours" />
-            <Picker.Item label="Autre" value="autre" />
-          </Picker>
-          {frequence === 'autre' && (
-            <Input
-              className="border p-2 mb-4 w-full rounded"
-              placeholder="Autre durée (Préciser)"
-              value={autreDuree}
-              onChangeText={setAutreDuree}
-            />
-          )}
-          <Label className="text-md text-left font-bold mb-4">Date</Label>
-          <Input
-            className="border p-2 mb-4 w-full rounded"
-            placeholder="Date de début"
-            value={dateDebut}
-            onChangeText={setDateDebut}
-          />
-          <Label className="text-md text-left font-bold mb-4">Heure</Label>
-          <Input
-            className="border p-2 mb-4 w-full rounded"
-            placeholder="Heure"
-            value={heure}
-            onChangeText={setHeure}
-          />
-          <Label className="text-md text-left font-bold mb-4">Adresse</Label>
-          <Input
-            className="border p-2 mb-4 w-full rounded"
-            placeholder="Adresse"
-            value={adresse}
-            onChangeText={setAdresse}
-          />
-          <Label className="text-md text-left font-bold mb-4">La nounou dort-elle chez vous ?</Label>
-          <RadioGroup className="flex flex-row mb-4">
-            <RadioButton
-              className="mr-4"
-              onPress={() => setDortChezVous('oui')}
-            >
-              <RadioLabel className={`p-2 ${dortChezVous === 'oui' ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}>
-                Oui
-              </RadioLabel>
-            </RadioButton>
-            <RadioButton
-              onPress={() => setDortChezVous('non')}
-            >
-              <RadioLabel className={`p-2 ${dortChezVous === 'non' ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}>
-                Non
-              </RadioLabel>
-            </RadioButton>
-          </RadioGroup>
-        </Container>
-      </ScrollView>
-      <Button
-        className="bg-blue-500 p-4 rounded w-full mr-2 ml-2 justify-center absolute bottom-0"
-        onPress={handleSubmit}
+    <SafeAreaView className='pt-3' style={{ flex: 1 }}>
+                  <Back title='Contrat' />
+
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        style={{ flex: 1 }}
       >
-        <Text className="text-center text-white font-bold">Valider</Text>
-      </Button>
-    </Container>
+        <ScrollView contentContainerStyle={{ flexGrow: 1, paddingBottom: 80 }}>
+          <Container className="p-4">
+            <Label className="text-md text-left font-bold mb-4">Description des tâches de la Nounou</Label>
+            <Input
+              className="border p-2 mb-4 w-full rounded border-gray-400"
+              placeholder="Ma nounou devra faire la lessive, s'occuper des enfants..."
+              value={description}
+              onChangeText={setDescription}
+              multiline
+              numberOfLines={4}
+            />
+            <Label className="text-md text-left font-bold mb-4">Nombre d'enfant</Label>
+            <Input
+              className="border p-2 mb-4 w-full rounded border-gray-400 h-14"
+              placeholder="Nombre d'enfants"
+              keyboardType="phone-pad"
+              value={nombreEnfants}
+              onChangeText={setNombreEnfants}
+            />
+            <Label className="text-md text-left font-bold mb-4">Durée de service</Label>
+            <Picker
+              selectedValue={frequence}
+              style={{ height: 50, width: '100%',}}
+              onValueChange={(itemValue) => setFrequence(itemValue)}
+            >
+              <Picker.Item label="Tous les jours" value="tous les jours" />
+              <Picker.Item label="Tous les week-ends" value="tous les week end" />
+              <Picker.Item label="Tous les 15 jours" value="tous les 15 jours" />
+              <Picker.Item label="Autre" value="autre" />
+            </Picker>
+            {frequence === 'autre' && (
+              <Input
+                className="border p-2 mb-4 w-full rounded border-gray-400"
+                placeholder="Autre durée (Préciser)"
+                value={autreDuree}
+                onChangeText={setAutreDuree}
+              />
+            )}
+            <Label className="text-md text-left font-bold mb-4">Date</Label>
+            <TouchableOpacity onPress={() => showDatePicker('dateDebut')}>
+              <Input
+                className="text-black h-14 border p-2 mb-4 w-full rounded border-gray-400"
+                placeholder="Date de début"
+                value={dateDebut}
+                editable={false}
+              />
+            </TouchableOpacity>
+            <DateTimePickerModal
+              isVisible={isDatePickerVisible}
+              mode="date"
+              onConfirm={handleDateConfirm}
+              onCancel={hideDatePicker}
+            />
+            <Label className="text-md text-left font-bold mb-4">Heure</Label>
+            <TouchableOpacity onPress={() => showTimePicker('heure')}>
+              <Input
+                className="text-black border p-2 mb-4 w-full rounded border-gray-400 h-14"
+                placeholder="Heure"
+                value={heure}
+                editable={false}
+              />
+            </TouchableOpacity>
+            <DateTimePickerModal
+              isVisible={isTimePickerVisible}
+              mode="time"
+              onConfirm={handleTimeConfirm}
+              onCancel={hideTimePicker}
+            />
+            <Label className="text-md text-left font-bold mb-4 ">Adresse</Label>
+            <Input
+              className="border p-2 mb-4 w-full rounded border-gray-400 h-14"
+              placeholder="Adresse"
+              value={adresse}
+              onChangeText={setAdresse}
+            />
+            <Label className="text-md text-left font-bold mb-4">La nounou dort-elle chez vous ?</Label>
+            <RadioGroup className="flex flex-row mb-4">
+              <RadioButton
+                className="mr-4"
+                onPress={() => setDortChezVous('oui')}
+              >
+                <RadioLabel className={`p-2 ${dortChezVous === 'oui' ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}>
+                  Oui
+                </RadioLabel>
+              </RadioButton>
+              <RadioButton
+                onPress={() => setDortChezVous('non')}
+              >
+                <RadioLabel className={`p-2 ${dortChezVous === 'non' ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}>
+                  Non
+                </RadioLabel>
+              </RadioButton>
+            </RadioGroup>
+          </Container>
+          <View style={styles.buttonContainer}>
+          <Button
+            style={styles.button}
+            onPress={handleSubmit}
+          >
+            <Text className="text-center text-white font-bold">Valider</Text>
+          </Button>
+        </View>
+        </ScrollView>
+       
+      </KeyboardAvoidingView>
+    </SafeAreaView>
   );
 };
+
+const styles = StyleSheet.create({
+  buttonContainer: {
+    position: 'absolute',
+    bottom: 20,
+    left: 0,
+    right: 0,
+    paddingHorizontal: 16,
+  },
+  button: {
+    backgroundColor: '#007BFF',
+    paddingVertical: 15,
+    borderRadius: 8,
+    elevation: 5, 
+    shadowColor: '#000', 
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.3,
+    shadowRadius: 4,
+  },
+});
 
 export default Contrats;

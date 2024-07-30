@@ -39,13 +39,13 @@ export default function ProductDetails() {
 
     const handleOrderService = () => {
         if (product.name === 'Ecole' || product.name === 'Entreprise') {
-            router.push('/../DevisCom'); // Remplacer par la route correcte pour la page de demande de devis
+            router.push('/../DevisCom'); 
         } else {
             router.push('/../FormCom');
         }
     };
 
-    // Handle special cases for 'Ecole' and 'Entreprise'
+   
     const renderSpecialSection = (productName) => {
         let title, image, description;
 

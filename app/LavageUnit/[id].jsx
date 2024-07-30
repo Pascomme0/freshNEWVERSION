@@ -88,6 +88,9 @@ export default function ProductDetails() {
     if (!product) {
         return <Text>Produit non trouvé</Text>;
     }
+    const handleOrderService = () => {
+        router.push('/../FormCom');
+    };
 
     const incrementQuantity = () => setQuantity(prevQuantity => prevQuantity + 1);
     const decrementQuantity = () => setQuantity(prevQuantity => Math.max(1, prevQuantity - 1));
@@ -138,7 +141,8 @@ export default function ProductDetails() {
                 </StyledView>
             </ScrollView>
             <StyledView className="absolute bottom-0 w-full p-4 bg-white border-t border-gray-200">
-                <TouchableOpacity className="bg-blue-500 p-4 rounded-[5px]">
+                <TouchableOpacity
+                onPress={handleOrderService} className="bg-blue-500 p-4 rounded-[5px]">
                     <StyledText className="text-white text-center text-lg ">Commander le service</StyledText>
                 </TouchableOpacity>
             </StyledView>

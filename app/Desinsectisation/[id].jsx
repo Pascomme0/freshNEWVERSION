@@ -40,6 +40,14 @@ export default function ProductDetails() {
     const incrementQuantity = () => setQuantity(prevQuantity => prevQuantity + 1);
     const decrementQuantity = () => setQuantity(prevQuantity => Math.max(1, prevQuantity - 1));
 
+    const handleOrderService = () => {
+        if (product.name === 'Ecole' || product.name === 'Entreprise') {
+            router.push('/../DevisCom'); // Remplacer par la route correcte pour la page de demande de devis
+        } else {
+            router.push('/../FormCom');
+        }
+    };
+
     return (
         <SafeAreaView className="flex-1 bg-white">
             <ScrollView className="bg-white">
@@ -51,7 +59,7 @@ export default function ProductDetails() {
                         <View className='rounded-full bg-slate-300 w-8 h-8 items-center justify-center'>
                             <FontAwesome name="angle-left" size={24} color="blue" />
                         </View>    
-                        </TouchableOpacity>
+                    </TouchableOpacity>
                     <StyledImage
                         source={product.image}
                         className="w-full h-80"
@@ -82,12 +90,16 @@ export default function ProductDetails() {
                             <Text className='text-white'>+</Text>
                         </Pressable>
                     </StyledView>
-                   
                 </StyledView>
             </ScrollView>
             <StyledView className="absolute bottom-0 w-full p-4 bg-white border-t border-gray-200">
-                <TouchableOpacity className="bg-blue-500 p-4 rounded-[5px]">
-                    <StyledText className="text-white text-center text-lg ">Commander le service</StyledText>
+                <TouchableOpacity 
+                    onPress={handleOrderService}
+                    className="bg-blue-500 p-4 rounded-[5px]"
+                >
+                    <StyledText className="text-white text-center text-lg">
+                        {['Ecole', 'Entreprise'].includes(product.name) ? 'Demander un devis' : 'Commander le service'}
+                    </StyledText>
                 </TouchableOpacity>
             </StyledView>
         </SafeAreaView>

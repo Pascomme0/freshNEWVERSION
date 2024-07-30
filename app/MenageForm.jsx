@@ -4,8 +4,9 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Back from '../components/Back';
 import { router } from 'expo-router';
+import { FontAwesome } from '@expo/vector-icons';
 
-const DevisCom = () => {
+const MenageForm = () => {
   const [duration, setDuration] = useState('');
   const [showOtherField, setShowOtherField] = useState(false);
   const [other, setOther] = useState('');
@@ -14,6 +15,10 @@ const DevisCom = () => {
   const [time, setTime] = useState(new Date());
   const [showTimePicker, setShowTimePicker] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
+  
+  // Ajouter un état pour le type de nettoyage
+  const [cleaningType, setCleaningType] = useState('');
+  const [showCleaningMenu, setShowCleaningMenu] = useState(false);
 
   const scrollViewRef = useRef(null);
 
@@ -49,6 +54,11 @@ const DevisCom = () => {
     setTime(currentTime);
   };
 
+  const handleCleaningTypeChange = (value) => {
+    setCleaningType(value);
+    setShowCleaningMenu(false);
+  };
+
   return (
     <SafeAreaView className="flex-1 bg-white">
       <Back title='Fiche de demande' />
@@ -62,12 +72,44 @@ const DevisCom = () => {
           contentContainerStyle={{ paddingBottom: 150 }}
         >
           <View className="mb-4">
-            <Text className="text-[16px] font-bold mb-2">Durée du service</Text>
+            <Text className="text-[16px] font-bold mb-2">Type de nettoyage</Text>
             <TouchableOpacity
-              className="justify-center h-12 border border-gray-300 p-2 rounded shadow-sm"
+              className="flex-row justify-between items-center h-12 border border-gray-300 p-2 rounded shadow-sm"
+              onPress={() => setShowCleaningMenu(!showCleaningMenu)}
+            >
+              <Text className='text-gray-700'>{cleaningType || 'Sélectionner le type de nettoyage'}</Text>
+              <FontAwesome name="angle-down" size={24} color="gray" /> 
+            </TouchableOpacity>
+            {showCleaningMenu && (
+              <View className="border rounded border-gray-300">
+                <TouchableOpacity
+                  className="p-2"
+                  onPress={() => handleCleaningTypeChange('Nettoyage Simple')}
+                >
+                  <Text>Nettoyage Simple</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  className="p-2"
+                  onPress={() => handleCleaningTypeChange('Nettoyage Lux')}
+                >
+                  <Text>Nettoyage Lux</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  className="p-2"
+                  onPress={() => handleCleaningTypeChange('Nettoyage Lux Pro')}
+                >
+                  <Text>Nettoyage Lux Pro</Text>
+                </TouchableOpacity>
+              </View>
+            )}
+
+            <Text className="text-[16px] font-bold mt-4 mb-2">Durée du service</Text>
+            <TouchableOpacity
+              className="flex-row justify-between items-center h-12 border border-gray-300 p-2 rounded shadow-sm"
               onPress={() => setShowMenu(!showMenu)}
             >
-              <Text className='text-gray-700 justify-center'>{duration || 'Sélectionner la durée'}</Text>
+              <Text className='text-gray-700'>{duration || 'Sélectionner la durée'}</Text>
+              <FontAwesome name="angle-down" size={24} color="gray" />  
             </TouchableOpacity>
             {showMenu && (
               <View className="border rounded border-gray-300">
@@ -105,6 +147,7 @@ const DevisCom = () => {
                 onChangeText={setOther}
               />
             )}
+
             <Text className="text-[16px] font-bold mt-4 mb-2">Date de traitement du service</Text>
             <TouchableOpacity
               className="h-12 justify-center border border-gray-300 p-2 rounded shadow-sm"
@@ -120,12 +163,13 @@ const DevisCom = () => {
                 onChange={handleDateChange}
               />
             )}
+
             <Text className="text-[16px] font-bold mt-4 mb-2">Heure de traitement du service</Text>
             <TouchableOpacity
               className="justify-center h-12 border border-gray-300 p-2 rounded shadow-sm"
               onPress={() => setShowTimePicker(true)}
             >
-              <Text className='text-gray-500 justify-center items-center'>{time.toLocaleTimeString() || 'Sélectionner une heure'}</Text>
+              <Text className=' justify-center items-center'>{time.toLocaleTimeString() || 'Sélectionner une heure'}</Text>
             </TouchableOpacity>
             {showTimePicker && (
               <DateTimePicker
@@ -135,21 +179,23 @@ const DevisCom = () => {
                 onChange={handleTimeChange}
               />
             )}
+
             <Text className="text-[16px] font-bold mt-4 mb-2">Remarques ou autres</Text>
             <TextInput
               className="h-20 border border-gray-300 p-2 rounded shadow-sm"
               placeholder="Remarques ou autres"
               multiline={true}
             />
+
             <Text className="text-[16px] font-bold mt-4 mb-2">Localisation de l'école</Text>
             <TextInput
               className="h-12 border border-gray-300 p-2 rounded shadow-sm"
-              placeholder="Localisation "
+              placeholder="Localisation"
             />
           </View>
         </ScrollView>
         <View className="absolute bottom-0 w-full p-4 bg-white shadow-lg">
-          <TouchableOpacity 
+          <TouchableOpacity
             className="bg-blue-500 p-4 rounded-lg"
             onPress={handleOrderService}
           >
@@ -161,4 +207,4 @@ const DevisCom = () => {
   );
 };
 
-export default DevisCom;
+export default MenageForm;
