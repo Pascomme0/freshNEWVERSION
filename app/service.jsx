@@ -27,7 +27,7 @@ export default function service() {
             <StyledView style={(
               {backgroundColor : 'rgba(28, 163, 247, 0.27)'}
             )} className=" bg-slate-100 w-40 h-40  justify-center items-center rounded-lg">
-              <Image source={require('../assets/images/acheter.png')} className="w-20 h-20" />
+              <Image source={require('../assets/images/OBJECTS.png')} className="w-20 h-20" />
             </StyledView>
             <StyledText className="mt-2 text-md text-center">Commander un {'\n'} service</StyledText>
           </StyledPressable>
@@ -37,7 +37,7 @@ export default function service() {
             <StyledView style={(
               {backgroundColor : 'rgba(28, 163, 247, 0.27)'}
             )} className="w-40 h-40 justify-center items-center rounded-lg">
-              <Image source={require('../assets/images/acheter.png')} className="w-20 h-20" />
+              <Image  source={require('../assets/images/IMGAGEE.png')} className="w-20 h-20" />
             </StyledView>
             <StyledText className="mt-2 text-md text-center">Acheter un {'\n'} produit</StyledText>
           </StyledPressable>

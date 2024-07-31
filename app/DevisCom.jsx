@@ -122,10 +122,10 @@ const DevisCom = () => {
             )}
             <Text className="text-[16px] font-bold mt-4 mb-2">Heure de traitement du service</Text>
             <TouchableOpacity
-              className="justify-center h-12 border border-gray-300 p-2 rounded shadow-sm"
+              className="text-black justify-center h-12 border border-gray-300 p-2 rounded shadow-sm"
               onPress={() => setShowTimePicker(true)}
             >
-              <Text className='text-gray-500 justify-center items-center'>{time.toLocaleTimeString() || 'Sélectionner une heure'}</Text>
+              <Text className='text-black justify-center items-center'>{time.toLocaleTimeString() || 'Sélectionner une heure'}</Text>
             </TouchableOpacity>
             {showTimePicker && (
               <DateTimePicker
