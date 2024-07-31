@@ -71,7 +71,7 @@ const ProductList1 = () => (
 
     <ScrollView className='pt-8'>
         <View className=' '>
-            <Text className="font-bold text-[19px] pt-3 pb-4">Produits vedettes</Text>
+            <Text className="font-bold text-[16px] pl-2 pt-3 pb-1">Les services les plus populaires</Text>
         </View>
 
         <StyledView style={{ flex: 1, flexWrap: 'wrap', flexDirection: 'row' }}>
