@@ -5,6 +5,10 @@ import { styled } from 'nativewind';
 import img from '../assets/images/prod.png'
 import { FontAwesome } from '@expo/vector-icons';
 import { Link, useNavigation } from 'expo-router';
+import purple from '../assets/images/purple.jpg';
+import pink from '../assets/images/rose.jpg';
+import blue from '../assets/images/blue.jpg';
+import pamplemousse from '../assets/images/pamplemousse.jpg';
 
 const StyledView = styled(View);
 const StyledText = styled(Text);
@@ -22,20 +26,26 @@ const products = [
     {
         id: 2,
         name: "Spray Toilettes",
-        price: 2500,
-        image: img
+        price: 3000,
+        image: purple
     },
     {
         id: 3,
         name: "Spray Toilettes",
         price: 2500,
-        image: img
+        image: pink
     },
     {
         id: 4,
         name: "Spray Toilettes",
         price: 2500,
-        image: img
+        image: blue
+    },
+    {
+        id: 5,
+        name: "Spray Toilettes",
+        price: 2500,
+        image: pamplemousse
     }
 ];
 

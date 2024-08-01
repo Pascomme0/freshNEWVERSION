@@ -5,6 +5,11 @@ import { styled } from 'nativewind';
 import img from '../assets/images/prod.png'
 import { FontAwesome } from '@expo/vector-icons';
 import { Link, useNavigation } from 'expo-router';
+import purple from '../assets/images/purple.jpg';
+import pink from '../assets/images/rose.jpg';
+import blue from '../assets/images/blue.jpg';
+import pamplemousse from '../assets/images/pamplemousse.jpg';
+
 
 const StyledView = styled(View);
 const StyledText = styled(Text);
@@ -21,24 +26,30 @@ const products = [
     {
         id: 2,
         name: "Spray Toilettes",
-        price: 2500,
-        image: img
+        price: 3000,
+        image: purple
     },
     {
         id: 3,
         name: "Spray Toilettes",
         price: 2500,
-        image: img
+        image: pink
     },
     {
         id: 4,
         name: "Spray Toilettes",
         price: 2500,
-        image: img
+        image: blue
+    },
+    {
+        id: 5,
+        name: "Spray Toilettes",
+        price: 2500,
+        image: pamplemousse
     }
 ];
 const ProductCard = ({ product }) => (
-    <Link push href={'/./DetailsProd'} asChild className=''>
+    <Link push href={`/SprayDetail/${product.id}`} asChild className=''>
         <Pressable className=" flex">
             <StyledView className="p-4 bg-white rounded-lg mb-4 w-48">
                 <StyledImage
@@ -57,7 +68,6 @@ const ProductCard = ({ product }) => (
 );
 const DetailCate = ({ titre = 'Senteurs' }) => (
     <SafeAreaView className="flex-1 bg-white">
-
         <ScrollView className=''>
             <View className='items-center pb-6'>
                 <Text className="font-bold text-[19px] pt-3">{titre}</Text>
