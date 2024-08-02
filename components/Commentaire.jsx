@@ -46,7 +46,6 @@ const Commentaire = () => {
 
   return (
       <View className="flex h-screen p-4 mb-4 bg-gray-100">
-        {/* Section Commentaires */}
         <ScrollView   className="flex-1  ">
           {commentaires.map(commentaire => (
             <View key={commentaire.id} className="p-4 border border-gray-200 mb-4 rounded-xl">
@@ -58,7 +57,6 @@ const Commentaire = () => {
           ))}
         </ScrollView>
 
-        {/* Bouton flottant pour ajouter un commentaire */}
         <TouchableOpacity
           onPress={handleAjouterCommentaire}
           style={{
@@ -82,7 +80,6 @@ const Commentaire = () => {
           <FontAwesome name="pencil" size={24} color="white" />
         </TouchableOpacity>
 
-        {/* Modal pour la note */}
         <Modal
           animationType="slide"
           transparent={true}

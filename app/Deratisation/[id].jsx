@@ -45,7 +45,24 @@ export default function ProductDetails() {
         }
     };
 
-   
+    const renderStars = (rating) => {
+        const fullStars = Math.floor(rating);
+        const halfStar = rating - fullStars >= 0.5;
+        const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
+        return (
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                {Array(fullStars).fill().map((_, index) => (
+                    <FontAwesome key={`full-${index}`} name="star" size={22} color="gold" />
+                ))}
+                {halfStar && <FontAwesome name="star-half-full" size={22} color="gold" />}
+                {Array(emptyStars).fill().map((_, index) => (
+                    <FontAwesome key={`empty-${index}`} name="star-o" size={22} color="gold" />
+                ))}
+                <Text style={{ marginLeft: 4, color: 'gray' }}>({rating})</Text>
+            </View>
+        );
+    };
+
     const renderSpecialSection = (productName) => {
         let title, image, description;
 
@@ -80,16 +97,16 @@ export default function ProductDetails() {
                 </View>
                 <StyledView className="p-4">
                     <StyledText className="text-gray-400 text-[16px] font-bold mb-2">{title}</StyledText>
-                    <StyledText className="text-2xl font-bold ">{product.name}</StyledText>
+                    <StyledText className="text-2xl font-bold pb-2">{product.name}</StyledText>
                     {product.rating && (
-                        <Text className='text-lg text-yellow-500 '>
-                            {`⭐`.repeat(Math.floor(product.rating))} ({product.rating})
-                        </Text>
+                        <View className="flex-row items-center">
+                            {renderStars(product.rating)}
+                        </View>
                     )}
                     <StyledText className="text-xl text-black mb-4 mt-2">
                         {typeof product.price === 'number' ? `${product.price} F` : product.price}
                     </StyledText>
-                    <StyledText className="text-lg mb-4">Description du service</StyledText>
+                    <StyledText className="text-lg mb-1">Description du service</StyledText>
                     <StyledText className="mb-4">{description}</StyledText>
                     <StyledText className="text-lg mb-2">Nombre de rideaux</StyledText>
                     <StyledView className="flex-row items-center mb-4">
@@ -132,9 +149,9 @@ export default function ProductDetails() {
                             <StyledText className="text-gray-400 text-[16px] font-bold mb-2">Dératisation</StyledText>
                             <StyledText className="text-2xl font-bold ">{product.name}</StyledText>
                             {product.rating && (
-                                <Text className='text-lg text-yellow-500 '>
-                                    {`⭐`.repeat(Math.floor(product.rating))} ({product.rating})
-                                </Text>
+                                <View className="flex-row items-center">
+                                    {renderStars(product.rating)}
+                                </View>
                             )}
                             <StyledText className="text-xl text-black mb-4 mt-2">
                                 {typeof product.price === 'number' ? `${product.price} F` : product.price}
@@ -155,7 +172,7 @@ export default function ProductDetails() {
                     </>
                 )}
             </ScrollView>
-            <StyledView className="absolute bottom-0 w-full p-4 bg-white border-t border-gray-200">
+            <StyledView className="absolute bottom-0 w-full p-4 bg-white ">
                 <TouchableOpacity
                     className="bg-blue-500 p-4 rounded-[5px]"
                     onPress={handleOrderService}

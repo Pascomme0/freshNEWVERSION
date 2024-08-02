@@ -7,7 +7,7 @@ import Commentaire from '../components/Commentaire'
 import { ScrollView } from 'react-native'
 const Avis = () => {
   return (
-    <SafeAreaView className='mt-6'>
+    <SafeAreaView className='mt-6 '>
       <Back title='Avis' />
       <ScrollView className=''>
       <Note />

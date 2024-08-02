@@ -47,15 +47,15 @@ import { Link } from 'expo-router';
 
 const SuiviCmd = () => {
 
-  
-  const router = useRouter();
+ {/*    const router = useRouter();
   const handlePress = (lien) => {
     router.push(`/EtapeSuiviCom/${lien}`);
-  };
+  };   */} 
+
   return (
     <ScrollView className="p-4 bg-gray-100">  
       {products.map((product) => (
-        <ProductCard className='' key={product.id} onPress={() => handlePress(product.lien)}>
+        <ProductCard className='' key={product.id} >
           <ProductImage source={product.image} />
           <ProductInfo>
             <ProductName>{product.name}</ProductName>

@@ -23,38 +23,63 @@ const products = [
         name: "Douche",
         price: 5000,
         image: douche,
+        rating: 3
     },
     {
         id: 2,
         name: "Salon",
         price: 2500,
         image: salon,
+        rating: 3.2
     },
     {
         id: 3,
         name: "Cuisine",
         price: 1000,
         image: cuisine,
+        rating: 5
     },
     {
         id: 4,
         name: "Chambre",
         price: 3500,
         image: chambre,
+        rating: 3
     },
     {
         id: 5,
         name: "Ecole",
         price: 'sur devis',
         image: école,
+        rating: 3
     },
     {
         id: 6,
         name: "Entreprise",
         price: 'sur devis',
         image: entreprise,
+        rating: 3
     }
 ];
+
+const renderStars = (rating) => {
+    const fullStars = Math.floor(rating);
+    const halfStar = rating - fullStars >= 0.5;
+    const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
+
+    return (
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            {Array(fullStars).fill().map((_, index) => (
+                <FontAwesome key={`full-${index}`} name="star" size={22} color="gold" />
+            ))}
+            {halfStar && <FontAwesome name="star-half-full" size={22} color="gold" />}
+            {Array(emptyStars).fill().map((_, index) => (
+                <FontAwesome key={`empty-${index}`} name="star-o" size={22} color="gold" />
+            ))}
+            <Text style={{ marginLeft: 4, color: 'gray' }}>({rating})</Text>
+        </View>
+    );
+};
 
 export default function ProductDetails() {
     const { id } = useLocalSearchParams();
@@ -63,7 +88,7 @@ export default function ProductDetails() {
     const [quantity, setQuantity] = useState(1);
 
     if (!product) {
-        return <Text>Produit non trouvé</Text>;
+        return <StyledText>Produit non trouvé</StyledText>;
     }
 
     const incrementQuantity = () => setQuantity(prevQuantity => prevQuantity + 1);
@@ -71,7 +96,7 @@ export default function ProductDetails() {
 
     const handleOrderService = () => {
         if (product.name === 'Ecole' || product.name === 'Entreprise') {
-            router.push('/../DevisCom'); // Remplacer par la route correcte pour la page de demande de devis
+            router.push('/../DevisCom'); 
         } else {
             router.push('/../FormCom');
         }
@@ -80,49 +105,49 @@ export default function ProductDetails() {
     return (
         <SafeAreaView className="flex-1 bg-white">
             <ScrollView className="bg-white">
-                <View className="relative">
+                <StyledView className="relative">
                     <TouchableOpacity
                         onPress={() => router.back()}
                         className="absolute top-4 left-4 z-10 p-2 rounded-full flex justify-center items-center"
                     >
-                        <View className='rounded-full bg-slate-300 w-8 h-8 items-center justify-center'>
+                        <StyledView className='rounded-full bg-slate-300 w-8 h-8 items-center justify-center'>
                             <FontAwesome name="angle-left" size={24} color="blue" />
-                        </View>
+                        </StyledView>
                     </TouchableOpacity>
                     <StyledImage
                         source={product.image}
                         className="w-full h-80"
                         resizeMode="cover"
                     />
-                </View>
+                </StyledView>
 
                 <StyledView className="p-4">
                     <StyledText className="text-gray-400 text-[16px] font-bold mb-2">Desinfection</StyledText>
-                    <StyledText className="text-2xl font-bold ">{product.name}</StyledText>
+                    <StyledText className="text-2xl font-bold pb-2">{product.name}</StyledText>
                     {product.rating && (
-                        <Text className='text-lg text-yellow-500 '>
-                            {`⭐`.repeat(Math.floor(product.rating))} ({product.rating})
-                        </Text>
+                        <StyledView className='flex flex-row items-center mb-2'>
+                            {renderStars(product.rating)}
+                        </StyledView>
                     )}
                     <StyledText className="text-xl text-black mb-4 mt-2">
                         {typeof product.price === 'number' ? `${product.price} F` : product.price}
                     </StyledText>
-                    <StyledText className="text-lg mb-4">Description du service</StyledText>
+                    <StyledText className="text-lg mb-1">Description du service</StyledText>
                     <StyledText className="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</StyledText>
                     <StyledText className="text-lg mb-2">Nombre de pièces</StyledText>
                     <StyledView className="flex-row items-center mb-4">
                         <Pressable onPress={decrementQuantity} className="bg-gray-200 p-2 rounded">
-                            <Text>-</Text>
+                            <StyledText>-</StyledText>
                         </Pressable>
-                        <Text className="mx-4">{quantity}</Text>
+                        <StyledText className="mx-4">{quantity}</StyledText>
                         <Pressable onPress={incrementQuantity} className="bg-blue-500 p-2 rounded">
-                            <Text className='text-white'>+</Text>
+                            <StyledText className='text-white'>+</StyledText>
                         </Pressable>
                     </StyledView>
                 
                 </StyledView>
             </ScrollView>
-            <StyledView className="absolute bottom-0 w-full p-4 bg-white border-t border-gray-200">
+            <StyledView className="absolute bottom-0 w-full p-4 bg-white">
                 <TouchableOpacity onPress={handleOrderService} className="bg-blue-500 p-4 rounded-[5px]">
                     <StyledText className="text-white text-center text-lg ">
                         {['Ecole', 'Entreprise'].includes(product.name) ? 'Demander un devis' : 'Commander le service'}
