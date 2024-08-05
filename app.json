@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Fresh",
-    "slug": "Fresh",
+    "slug": "fresh",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -38,8 +38,9 @@
         "origin": false
       },
       "eas": {
-        "projectId": "c1e2e789-474e-4b1d-a997-da5429316a94"
+        "projectId": "9b4e2c48-9823-433f-bafa-f833613f8390"
       }
-    }
+    },
+    "owner": "pacomebrou"
   }
 }

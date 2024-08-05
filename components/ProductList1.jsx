@@ -48,7 +48,7 @@ const products = [
 ];
 
 const ProductCard = ({ product }) => (
-    <Link push href='/categoryservice' asChild className=''>
+    <Link push href='../ListServices/Lessive' asChild className=''>
         <Pressable className="  flex">
 
             <StyledView className="p-4 bg-white rounded-lg shadow-md mb-4 w-35">
@@ -82,7 +82,7 @@ const ProductList1 = () => (
             ))}
         </StyledView>
 
-        <Link push href='/categoryservice' asChild className=''>
+        <Link push href='../ListServices/Lessive' asChild className=''>
             <Pressable className=" px-2 flex">
                 <View className=' flex flex-row items-center justify-end  pr-3 pb-12  '>
                     <Text className="text-blue-600 text-[14px] font-semibold pr-2 ">Voir tout</Text>

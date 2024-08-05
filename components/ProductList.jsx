@@ -50,7 +50,7 @@ const products = [
 ];
 
 const ProductCard = ({ product }) => (
-    <Link push href='/DetailsProd' asChild className=''>
+        <Link href={`../category/Category${1}`} asChild className=''>
     <Pressable className="  flex">
     <StyledView className="p-4 bg-white rounded-lg shadow-md mb-4 w-35">
         <StyledImage
@@ -65,7 +65,7 @@ const ProductCard = ({ product }) => (
         </StyledButton>
     </StyledView>
     </Pressable>
-</Link>
+    </Link>
 
 );
 const ProductList = () => (

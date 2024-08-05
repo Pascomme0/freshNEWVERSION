@@ -23,6 +23,7 @@ const products = [
         price: 2500,
         image: img,
         rating: 4.5,
+        type : "Citron",
     },
     {
         id: 2,
@@ -30,6 +31,8 @@ const products = [
         price: 3000,
         image: purple,
         rating: 3.5,
+        type : "Lavande",
+
     },
     {
         id: 3,
@@ -37,6 +40,8 @@ const products = [
         price: 2500,
         image: pink,
         rating: 5,
+        type : "Joyeuse rose",
+
     },
     {
         id: 4,
@@ -44,6 +49,8 @@ const products = [
         price: 2500,
         image: blue,
         rating: 2,
+        type : "Océan",
+
     },
     {
         id: 5,
@@ -51,6 +58,8 @@ const products = [
         price: 2500,
         image: pamplemousse,
         rating: 4,
+        type : "Pamplemousse",
+
     }
 ];
 
@@ -107,10 +116,15 @@ export default function ProductDetails() {
                         resizeMode="cover"
                     />
                 </View>
-
+               
                 <StyledView className="p-4">
                     <StyledText className="text-gray-400 text-[16px] font-bold mb-2">Senteur</StyledText>
-                    <StyledText className="text-2xl font-bol ">{product.name}</StyledText>
+                    <View className='flex flex-row items-center '>
+                    <StyledText className="text-2xl font-bold ">{product.name}</StyledText>
+                    <Text className='text-gray-700 text-[18px] pl-2'>( {product.type} )</Text>
+
+                    </View>
+
                     {product.rating && (
                         <View className="flex-row items-center">
                             {renderStars(product.rating)}

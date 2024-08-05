@@ -7,7 +7,6 @@ import { FontAwesome } from '@expo/vector-icons';
 import { Link, useNavigation } from 'expo-router';
 
 
-// Définir les styles en utilisant NativeWind
 const StyledView = styled(View);
 const StyledText = styled(Text);
 const StyledImage = styled(Image);
