@@ -5,6 +5,7 @@ import nounou from '../../assets/images/vaisselle.jpg';
 import { Link } from 'expo-router';
 import { useRouter } from 'expo-router';
 import TotalEvent from '../ServiceSection/TotalEvent';
+import { FontAwesome } from '@expo/vector-icons';
 
 const Container = styled(View);
 const Title = styled(Text);
@@ -19,6 +20,14 @@ const MenLav = () => {
     <View className="flex-1 bg-white">
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <Container className="items-start">
+        <TouchableOpacity
+                        onPress={() => router.back()}
+                        className="absolute top-4 left-4 z-10 p-2 rounded-full flex justify-center items-center"
+                    >
+                        <View className='rounded-full bg-slate-300 w-8 h-8 items-center justify-center'>
+                            <FontAwesome name="angle-left" size={24} color="blue" />
+                        </View>
+                    </TouchableOpacity>
           <Image 
             source={nounou} 
             style={{ width: '100%', height: 380 }} 
@@ -36,7 +45,6 @@ const MenLav = () => {
         </Container>
       </ScrollView>
       <ButtonContainer className="w-full  px-4 pb-4">
-        
         <CustomButton
           onPress={() => router.push('../ServiceSection/TotalEvent')}
           className="h-[54px] bg-blue-500 rounded-lg items-center justify-center"
