@@ -14,7 +14,6 @@ const Infos = () => {
         <Back title = "Informations personnelles"/>   
         <ScrollView>
         <Formulaire/>
-
         </ScrollView>
     </SafeAreaView>
   )
