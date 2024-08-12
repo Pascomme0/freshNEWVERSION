@@ -9,7 +9,8 @@ const shop = () => {
    
        <SafeAreaView>
          <ScrollView>
-    <Back title='Mon panier'/>
+         <Back title='Mon panier'/>
+
     <ShoppingCart/>
     </ScrollView>
  </SafeAreaView>

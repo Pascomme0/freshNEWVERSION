@@ -25,45 +25,45 @@ const products = [
         type: "Citron",
         des: (
             <>
-                <Text style={{ backgroundColor: '#4bacc6', color: 'white',marginBottom:4,fontSize:17, padding: 3, fontWeight: 'bold' }}>
+                <Text style={{ backgroundColor: '#4bacc6', color: 'white', marginBottom: 4, fontSize: 17, padding: 3, fontWeight: 'bold' }}>
                     Gardez les odeurs nuisibles dans le POT{'\n'}{'\n'}
                 </Text>
-              
 
-                <Text style={{  color: 'gray', padding: 2,fontSize: 16,lineHeight:22, fontWeight: 'bold' }}>
-                Offrez à vos toilettes une <Text style={{  color: 'black', padding: 2,fontSize: 16, fontWeight: 'bold' }}>touche de fraîcheur instantanée</Text>  avec notre Spray Toilette Rafraîchissant. Conçu pour éliminer efficacement les odeurs désagréables, ce spray offre une solution rapide et pratique pour maintenir une atmosphère agréable et hygiénique.{'\n'}
 
-Sa formule avancée agit instantanément pour neutraliser les mauvaises odeurs, laissant derrière elle un parfum frais et discret. {''} <Text style={{  color: 'black', padding: 2,fontSize: 16, fontWeight: 'bold' }}>Il suffit de vaporiser quelques jets dans l'eau de la cuvette avant de partir (avant de faire le po) pour profiter d'une sensation de propreté et de fraîcheur. </Text>{'\n'} 
+                <Text style={{ color: 'gray', padding: 2, fontSize: 16, lineHeight: 22, fontWeight: 'bold' }}>
+                    Offrez à vos toilettes une <Text style={{ color: 'black', padding: 2, fontSize: 16, fontWeight: 'bold' }}>touche de fraîcheur instantanée</Text>  avec notre Spray Toilette Rafraîchissant. Conçu pour éliminer efficacement les odeurs désagréables, ce spray offre une solution rapide et pratique pour maintenir une atmosphère agréable et hygiénique.{'\n'}
+
+                    Sa formule avancée agit instantanément pour neutraliser les mauvaises odeurs, laissant derrière elle un parfum frais et discret. {''} <Text style={{ color: 'black', padding: 2, fontSize: 16, fontWeight: 'bold' }}>Il suffit de vaporiser quelques jets dans l'eau de la cuvette avant de partir (avant de faire le po) pour profiter d'une sensation de propreté et de fraîcheur. </Text>{'\n'}
                 </Text>
 
-                <Text style={{ backgroundColor: '#4bacc6',fontSize:17, color: 'white', padding: 2, fontWeight: 'bold' }}>
-                Assis sur le pot en train de faire, Vous ne sentirez plus l'odeur de votre propre po
+                <Text style={{ backgroundColor: '#4bacc6', fontSize: 17, color: 'white', padding: 2, fontWeight: 'bold' }}>
+                    Assis sur le pot en train de faire, Vous ne sentirez plus l'odeur de votre propre po
 
-{'\n'}{'\n'}
+                    {'\n'}{'\n'}
                 </Text>
-                <Text style={{  color: 'gray', padding: 2,fontSize: 16,lineHeight:22, fontWeight: 'bold' }}>
-                Le Spray Toilette Rafraîchissant est idéal pour {''} <Text style={{  color: 'black', padding: 2,fontSize: 16, fontWeight: 'bold' }}>une utilisation à la maison, au bureau, dans les lieux publics ou même en voyage. </Text>
-                Son format compact en fait un compagnon de voyage pratique, vous permettant de garder vos toilettes fraîches où que vous soyez.<Text style={{  color: 'black', padding: 2,fontSize: 16, fontWeight: 'bold' }}> Pour 3 pulvérisation par jour, vous pouvez l'utiliser pendant 3 mois.{'\n'} </Text>
-                {'\n'}</Text>
-                <Text style={{ backgroundColor: '#4bacc6', color: 'white',marginBottom:4,fontSize:17, padding: 3, fontWeight: 'bold' }}>
-                Caractéristiques {'\n'}{'\n'}
+                <Text style={{ color: 'gray', padding: 2, fontSize: 16, lineHeight: 22, fontWeight: 'bold' }}>
+                    Le Spray Toilette Rafraîchissant est idéal pour {''} <Text style={{ color: 'black', padding: 2, fontSize: 16, fontWeight: 'bold' }}>une utilisation à la maison, au bureau, dans les lieux publics ou même en voyage. </Text>
+                    Son format compact en fait un compagnon de voyage pratique, vous permettant de garder vos toilettes fraîches où que vous soyez.<Text style={{ color: 'black', padding: 2, fontSize: 16, fontWeight: 'bold' }}> Pour 3 pulvérisation par jour, vous pouvez l'utiliser pendant 3 mois.{'\n'} </Text>
+                    {'\n'}</Text>
+                <Text style={{ backgroundColor: '#4bacc6', color: 'white', marginBottom: 4, fontSize: 17, padding: 3, fontWeight: 'bold' }}>
+                    Caractéristiques {'\n'}{'\n'}
                 </Text>
-                <View style={{ marginLeft: 20 }}>
-                    <Text style={{ listStyleType: 'disc', marginBottom: 4 ,fontSize: 16}}>• Neutralise les odeurs désagréables{'\n'} instantanément.</Text>
-                    <Text style={{ listStyleType: 'disc', marginBottom: 4,fontSize: 16 }}>• Parfum frais et discret.</Text>
-                    <Text style={{ listStyleType: 'disc', marginBottom: 4 ,fontSize: 16}}>• Dure 3 mois pour 3 pulvérisations par jour.</Text>
-                    <Text style={{ listStyleType: 'disc', marginBottom: 4 ,fontSize: 16}}>• Format compact, idéal pour une utilisation{'\n'} en déplacement.</Text>
-                    <Text style={{ listStyleType: 'disc', marginBottom: 4 ,fontSize: 16}}>• Facile à utiliser.</Text>
+                <View style={{ marginLeft: 20, fontSize: 16, lineHeight: 22, fontWeight: 'bold' }}>
+                    <Text style={{ listStyleType: 'disc', marginBottom: 4, fontSize: 16 }}>• Neutralise les odeurs désagréables{'\n'} instantanément.</Text>
+                    <Text style={{ listStyleType: 'disc', marginBottom: 4, fontSize: 16 }}>• Parfum frais et discret.</Text>
+                    <Text style={{ listStyleType: 'disc', marginBottom: 4, fontSize: 16 }}>• Dure 3 mois pour 3 pulvérisations par jour.</Text>
+                    <Text style={{ listStyleType: 'disc', marginBottom: 4, fontSize: 16 }}>• Format compact, idéal pour une utilisation{'\n'} en déplacement.</Text>
+                    <Text style={{ listStyleType: 'disc', marginBottom: 4, fontSize: 16 }}>• Facile à utiliser.</Text>
                 </View>{'\n'}
-                <Text style={{ backgroundColor: '#4bacc6', color: 'white',marginBottom:4,fontSize:17, padding: 3, fontWeight: 'bold' }}>
-               Utilisation {'\n'}{'\n'}
+                <Text style={{ backgroundColor: '#4bacc6', color: 'white', marginBottom: 4, fontSize: 17, padding: 3, fontWeight: 'bold' }}>
+                    Utilisation {'\n'}{'\n'}
                 </Text>
-                <View style={{ marginLeft: 20 }}>
-                    <Text style={{ listStyleType: 'disc', marginBottom: 4 ,fontSize: 16}}>• Remuer avant utilisation</Text>
-                    <Text style={{ listStyleType: 'disc', marginBottom: 4,fontSize: 16 }}>• Pulvériser 3 à 5 fois dans l'eau de la cuvette{'\n'} avant de partir (avant de vous asseoir).
+                <View style={{ marginLeft: 20, fontSize: 16, lineHeight: 22, fontWeight: 'bold' }}>
+                    <Text style={{ listStyleType: 'disc', marginBottom: 4, fontSize: 16 }}>• Remuer avant utilisation</Text>
+                    <Text style={{ listStyleType: 'disc', marginBottom: 4, fontSize: 16 }}>• Pulvériser 3 à 5 fois dans l'eau de la cuvette{'\n'} avant de partir (avant de vous asseoir).
                     </Text>
-                    <Text style={{ listStyleType: 'disc', marginBottom: 4 ,fontSize: 16}}>• Si en pulvérisant, des gouttes ont touché le{'\n'} contour de la cuvette,prenez du papier toilette et{'\n'} nettoyer avant de vous asseoir..</Text>
-                    <Text style={{ listStyleType: 'disc', marginBottom: 4 ,fontSize: 16}}>• Pas d'effet secondaire quelconque sur les {'\n'}'parties. (Produit testé et approuvé)
+                    <Text style={{ listStyleType: 'disc', marginBottom: 4, fontSize: 16 }}>• Si en pulvérisant, des gouttes ont touché le{'\n'} contour de la cuvette,prenez du papier toilette et{'\n'} nettoyer avant de vous asseoir..</Text>
+                    <Text style={{ listStyleType: 'disc', marginBottom: 4, fontSize: 16 }}>• Pas d'effet secondaire quelconque sur les {'\n'}'parties. (Produit testé et approuvé)
                     </Text>
                 </View>
             </>
@@ -77,7 +77,51 @@ Sa formule avancée agit instantanément pour neutraliser les mauvaises odeurs, 
         image: purple,
         rating: 3.5,
         type: "Lavande",
-        des: ""
+        des: (
+            <>
+                <Text style={{ backgroundColor: '#4bacc6', color: 'white', marginBottom: 4, fontSize: 17, padding: 3, fontWeight: 'bold' }}>
+                    Gardez les odeurs nuisibles dans le POT{'\n'}{'\n'}
+                </Text>
+
+
+                <Text style={{ color: 'gray', padding: 2, fontSize: 16, lineHeight: 22, fontWeight: 'bold' }}>
+                    Offrez à vos toilettes une <Text style={{ color: 'black', padding: 2, fontSize: 16, fontWeight: 'bold' }}>touche de fraîcheur instantanée</Text>  avec notre Spray Toilette Rafraîchissant. Conçu pour éliminer efficacement les odeurs désagréables, ce spray offre une solution rapide et pratique pour maintenir une atmosphère agréable et hygiénique.{'\n'}
+
+                    Sa formule avancée agit instantanément pour neutraliser les mauvaises odeurs, laissant derrière elle un parfum frais et discret. {''} <Text style={{ color: 'black', padding: 2, fontSize: 16, fontWeight: 'bold' }}>Il suffit de vaporiser quelques jets dans l'eau de la cuvette avant de partir (avant de faire le po) pour profiter d'une sensation de propreté et de fraîcheur. </Text>{'\n'}
+                </Text>
+
+                <Text style={{ backgroundColor: '#4bacc6', fontSize: 17, color: 'white', padding: 2, fontWeight: 'bold' }}>
+                    Assis sur le pot en train de faire, Vous ne sentirez plus l'odeur de votre propre po
+
+                    {'\n'}{'\n'}
+                </Text>
+                <Text style={{ color: 'gray', padding: 2, fontSize: 16, lineHeight: 22, fontWeight: 'bold' }}>
+                    Le Spray Toilette Rafraîchissant est idéal pour {''} <Text style={{ color: 'black', padding: 2, fontSize: 16, fontWeight: 'bold' }}>une utilisation à la maison, au bureau, dans les lieux publics ou même en voyage. </Text>
+                    Son format compact en fait un compagnon de voyage pratique, vous permettant de garder vos toilettes fraîches où que vous soyez.<Text style={{ color: 'black', padding: 2, fontSize: 16, fontWeight: 'bold' }}> Pour 3 pulvérisation par jour, vous pouvez l'utiliser pendant 3 mois.{'\n'} </Text>
+                    {'\n'}</Text>
+                <Text style={{ backgroundColor: '#4bacc6', color: 'white', marginBottom: 4, fontSize: 17, padding: 3, fontWeight: 'bold' }}>
+                    Caractéristiques {'\n'}{'\n'}
+                </Text>
+                <View style={{ marginLeft: 20, fontSize: 16, lineHeight: 22, fontWeight: 'bold' }}>
+                    <Text style={{ listStyleType: 'disc', marginBottom: 4, fontSize: 16 }}>• Neutralise les odeurs désagréables{'\n'} instantanément.</Text>
+                    <Text style={{ listStyleType: 'disc', marginBottom: 4, fontSize: 16 }}>• Parfum frais et discret.</Text>
+                    <Text style={{ listStyleType: 'disc', marginBottom: 4, fontSize: 16 }}>• Dure 3 mois pour 3 pulvérisations par jour.</Text>
+                    <Text style={{ listStyleType: 'disc', marginBottom: 4, fontSize: 16 }}>• Format compact, idéal pour une utilisation{'\n'} en déplacement.</Text>
+                    <Text style={{ listStyleType: 'disc', marginBottom: 4, fontSize: 16 }}>• Facile à utiliser.</Text>
+                </View>{'\n'}
+                <Text style={{ backgroundColor: '#4bacc6', color: 'white', marginBottom: 4, fontSize: 17, padding: 3, fontWeight: 'bold' }}>
+                    Utilisation {'\n'}{'\n'}
+                </Text>
+                <View style={{ marginLeft: 20, fontSize: 16, lineHeight: 22, fontWeight: 'bold' }}>
+                    <Text style={{ listStyleType: 'disc', marginBottom: 4, fontSize: 16 }}>• Remuer avant utilisation</Text>
+                    <Text style={{ listStyleType: 'disc', marginBottom: 4, fontSize: 16 }}>• Pulvériser 3 à 5 fois dans l'eau de la cuvette{'\n'} avant de partir (avant de vous asseoir).
+                    </Text>
+                    <Text style={{ listStyleType: 'disc', marginBottom: 4, fontSize: 16 }}>• Si en pulvérisant, des gouttes ont touché le{'\n'} contour de la cuvette,prenez du papier toilette et{'\n'} nettoyer avant de vous asseoir..</Text>
+                    <Text style={{ listStyleType: 'disc', marginBottom: 4, fontSize: 16 }}>• Pas d'effet secondaire quelconque sur les {'\n'}'parties. (Produit testé et approuvé)
+                    </Text>
+                </View>
+            </>
+        )
 
     },
     {
@@ -87,7 +131,51 @@ Sa formule avancée agit instantanément pour neutraliser les mauvaises odeurs, 
         image: pink,
         rating: 5,
         type: "Joyeuse rose",
-        des: ""
+        des: (
+            <>
+                <Text style={{ backgroundColor: '#4bacc6', color: 'white', marginBottom: 4, fontSize: 17, padding: 3, fontWeight: 'bold' }}>
+                    Gardez les odeurs nuisibles dans le POT{'\n'}{'\n'}
+                </Text>
+
+
+                <Text style={{ color: 'gray', padding: 2, fontSize: 16, lineHeight: 22, fontWeight: 'bold' }}>
+                    Offrez à vos toilettes une <Text style={{ color: 'black', padding: 2, fontSize: 16, fontWeight: 'bold' }}>touche de fraîcheur instantanée</Text>  avec notre Spray Toilette Rafraîchissant. Conçu pour éliminer efficacement les odeurs désagréables, ce spray offre une solution rapide et pratique pour maintenir une atmosphère agréable et hygiénique.{'\n'}
+
+                    Sa formule avancée agit instantanément pour neutraliser les mauvaises odeurs, laissant derrière elle un parfum frais et discret. {''} <Text style={{ color: 'black', padding: 2, fontSize: 16, fontWeight: 'bold' }}>Il suffit de vaporiser quelques jets dans l'eau de la cuvette avant de partir (avant de faire le po) pour profiter d'une sensation de propreté et de fraîcheur. </Text>{'\n'}
+                </Text>
+
+                <Text style={{ backgroundColor: '#4bacc6', fontSize: 17, color: 'white', padding: 2, fontWeight: 'bold' }}>
+                    Assis sur le pot en train de faire, Vous ne sentirez plus l'odeur de votre propre po
+
+                    {'\n'}{'\n'}
+                </Text>
+                <Text style={{ color: 'gray', padding: 2, fontSize: 16, lineHeight: 22, fontWeight: 'bold' }}>
+                    Le Spray Toilette Rafraîchissant est idéal pour {''} <Text style={{ color: 'black', padding: 2, fontSize: 16, fontWeight: 'bold' }}>une utilisation à la maison, au bureau, dans les lieux publics ou même en voyage. </Text>
+                    Son format compact en fait un compagnon de voyage pratique, vous permettant de garder vos toilettes fraîches où que vous soyez.<Text style={{ color: 'black', padding: 2, fontSize: 16, fontWeight: 'bold' }}> Pour 3 pulvérisation par jour, vous pouvez l'utiliser pendant 3 mois.{'\n'} </Text>
+                    {'\n'}</Text>
+                <Text style={{ backgroundColor: '#4bacc6', color: 'white', marginBottom: 4, fontSize: 17, padding: 3, fontWeight: 'bold' }}>
+                    Caractéristiques {'\n'}{'\n'}
+                </Text>
+                <View style={{ marginLeft: 20, fontSize: 16, lineHeight: 22, fontWeight: 'bold' }}>
+                    <Text style={{ listStyleType: 'disc', marginBottom: 4, fontSize: 16 }}>• Neutralise les odeurs désagréables{'\n'} instantanément.</Text>
+                    <Text style={{ listStyleType: 'disc', marginBottom: 4, fontSize: 16 }}>• Parfum frais et discret.</Text>
+                    <Text style={{ listStyleType: 'disc', marginBottom: 4, fontSize: 16 }}>• Dure 3 mois pour 3 pulvérisations par jour.</Text>
+                    <Text style={{ listStyleType: 'disc', marginBottom: 4, fontSize: 16 }}>• Format compact, idéal pour une utilisation{'\n'} en déplacement.</Text>
+                    <Text style={{ listStyleType: 'disc', marginBottom: 4, fontSize: 16 }}>• Facile à utiliser.</Text>
+                </View>{'\n'}
+                <Text style={{ backgroundColor: '#4bacc6', color: 'white', marginBottom: 4, fontSize: 17, padding: 3, fontWeight: 'bold' }}>
+                    Utilisation {'\n'}{'\n'}
+                </Text>
+                <View style={{ marginLeft: 20, fontSize: 16, lineHeight: 22, fontWeight: 'bold' }}>
+                    <Text style={{ listStyleType: 'disc', marginBottom: 4, fontSize: 16 }}>• Remuer avant utilisation</Text>
+                    <Text style={{ listStyleType: 'disc', marginBottom: 4, fontSize: 16 }}>• Pulvériser 3 à 5 fois dans l'eau de la cuvette{'\n'} avant de partir (avant de vous asseoir).
+                    </Text>
+                    <Text style={{ listStyleType: 'disc', marginBottom: 4, fontSize: 16 }}>• Si en pulvérisant, des gouttes ont touché le{'\n'} contour de la cuvette,prenez du papier toilette et{'\n'} nettoyer avant de vous asseoir..</Text>
+                    <Text style={{ listStyleType: 'disc', marginBottom: 4, fontSize: 16 }}>• Pas d'effet secondaire quelconque sur les {'\n'}'parties. (Produit testé et approuvé)
+                    </Text>
+                </View>
+            </>
+        )
 
     },
     {
@@ -108,7 +196,51 @@ Sa formule avancée agit instantanément pour neutraliser les mauvaises odeurs, 
         image: pamplemousse,
         rating: 4,
         type: "Pamplemousse",
-        des: ""
+        des: (
+            <>
+                <Text style={{ backgroundColor: '#4bacc6', color: 'white', marginBottom: 4, fontSize: 17, padding: 3, fontWeight: 'bold' }}>
+                    Gardez les odeurs nuisibles dans le POT{'\n'}{'\n'}
+                </Text>
+
+
+                <Text style={{ color: 'gray', padding: 2, fontSize: 16, lineHeight: 22, fontWeight: 'bold' }}>
+                    Offrez à vos toilettes une <Text style={{ color: 'black', padding: 2, fontSize: 16, fontWeight: 'bold' }}>touche de fraîcheur instantanée</Text>  avec notre Spray Toilette Rafraîchissant. Conçu pour éliminer efficacement les odeurs désagréables, ce spray offre une solution rapide et pratique pour maintenir une atmosphère agréable et hygiénique.{'\n'}
+
+                    Sa formule avancée agit instantanément pour neutraliser les mauvaises odeurs, laissant derrière elle un parfum frais et discret. {''} <Text style={{ color: 'black', padding: 2, fontSize: 16, fontWeight: 'bold' }}>Il suffit de vaporiser quelques jets dans l'eau de la cuvette avant de partir (avant de faire le po) pour profiter d'une sensation de propreté et de fraîcheur. </Text>{'\n'}
+                </Text>
+
+                <Text style={{ backgroundColor: '#4bacc6', fontSize: 17, color: 'white', padding: 2, fontWeight: 'bold' }}>
+                    Assis sur le pot en train de faire, Vous ne sentirez plus l'odeur de votre propre po
+
+                    {'\n'}{'\n'}
+                </Text>
+                <Text style={{ color: 'gray', padding: 2, fontSize: 16, lineHeight: 22, fontWeight: 'bold' }}>
+                    Le Spray Toilette Rafraîchissant est idéal pour {''} <Text style={{ color: 'black', padding: 2, fontSize: 16, fontWeight: 'bold' }}>une utilisation à la maison, au bureau, dans les lieux publics ou même en voyage. </Text>
+                    Son format compact en fait un compagnon de voyage pratique, vous permettant de garder vos toilettes fraîches où que vous soyez.<Text style={{ color: 'black', padding: 2, fontSize: 16, fontWeight: 'bold' }}> Pour 3 pulvérisation par jour, vous pouvez l'utiliser pendant 3 mois.{'\n'} </Text>
+                    {'\n'}</Text>
+                <Text style={{ backgroundColor: '#4bacc6', color: 'white', marginBottom: 4, fontSize: 17, padding: 3, fontWeight: 'bold' }}>
+                    Caractéristiques {'\n'}{'\n'}
+                </Text>
+                <View style={{ marginLeft: 20, fontSize: 16, lineHeight: 22, fontWeight: 'bold' }}>
+                    <Text style={{ listStyleType: 'disc', marginBottom: 4, fontSize: 16 }}>• Neutralise les odeurs désagréables{'\n'} instantanément.</Text>
+                    <Text style={{ listStyleType: 'disc', marginBottom: 4, fontSize: 16 }}>• Parfum frais et discret.</Text>
+                    <Text style={{ listStyleType: 'disc', marginBottom: 4, fontSize: 16 }}>• Dure 3 mois pour 3 pulvérisations par jour.</Text>
+                    <Text style={{ listStyleType: 'disc', marginBottom: 4, fontSize: 16 }}>• Format compact, idéal pour une utilisation{'\n'} en déplacement.</Text>
+                    <Text style={{ listStyleType: 'disc', marginBottom: 4, fontSize: 16 }}>• Facile à utiliser.</Text>
+                </View>{'\n'}
+                <Text style={{ backgroundColor: '#4bacc6', color: 'white', marginBottom: 4, fontSize: 17, padding: 3, fontWeight: 'bold' }}>
+                    Utilisation {'\n'}{'\n'}
+                </Text>
+                <View style={{ marginLeft: 20, fontSize: 16, lineHeight: 22, fontWeight: 'bold' }}>
+                    <Text style={{ listStyleType: 'disc', marginBottom: 4, fontSize: 16 }}>• Remuer avant utilisation</Text>
+                    <Text style={{ listStyleType: 'disc', marginBottom: 4, fontSize: 16 }}>• Pulvériser 3 à 5 fois dans l'eau de la cuvette{'\n'} avant de partir (avant de vous asseoir).
+                    </Text>
+                    <Text style={{ listStyleType: 'disc', marginBottom: 4, fontSize: 16 }}>• Si en pulvérisant, des gouttes ont touché le{'\n'} contour de la cuvette,prenez du papier toilette et{'\n'} nettoyer avant de vous asseoir..</Text>
+                    <Text style={{ listStyleType: 'disc', marginBottom: 4, fontSize: 16 }}>• Pas d'effet secondaire quelconque sur les {'\n'}'parties. (Produit testé et approuvé)
+                    </Text>
+                </View>
+            </>
+        )
 
     }
 ];
