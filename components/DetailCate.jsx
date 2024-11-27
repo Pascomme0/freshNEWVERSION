@@ -88,8 +88,5 @@ const DetailCate = ({ titre = 'Senteurs' }) => (
             </Link>
         </ScrollView>
     </SafeAreaView >
-
-
 );
-
 export default DetailCate;
