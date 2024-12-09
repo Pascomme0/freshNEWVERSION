@@ -3,20 +3,43 @@ import React from 'react';
 import { View, Text, TouchableOpacity, BackHandler, Platform, Alert } from 'react-native';
 import { useRouter } from 'expo-router';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import { Provider, useDispatch, useSelector } from 'react-redux';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as Updates from 'expo-updates';
+import { setUser, setToken } from '../app/userSlice';
 
 
 const ProfilSections = () => {
-  const router = useRouter();
+    const router = useRouter();
+    const dispatch = useDispatch();
+    const restartApp = async () => {
+        if (Updates.reloadAsync) {
+            await Updates.reloadAsync(); // Redémarre complètement l'application
+        } else {
+            console.log('Updates API not available.');
+        }
+    };
   const quitterApp = () => {
-    if (Platform.OS === 'android') {
-      BackHandler.exitApp();
-    } else {
       Alert.alert(
-        "Quitter l'application",
-        "La fermeture d'application n'est pas supportée sur iOS. Veuillez utiliser le gestionnaire de tâches de votre appareil pour quitter l'application.",
-        [{ text: "OK" }]
+          "Confirmation",
+          "Voulez-vous vraiment vous déconnecter ?",
+          [
+              {
+                  text: "Annuler",
+                  style: "cancel"
+              },
+              {
+                  text: "Quitter",
+                  onPress: async () => {
+                      await AsyncStorage.clear();
+                      dispatch(setUser(null));
+                      dispatch(setToken(null));
+                      await restartApp();
+                      // goToHome(navigation)
+                  }
+              }
+          ]
       );
-    }
   };
 
   return (

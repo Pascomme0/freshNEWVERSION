@@ -4,15 +4,22 @@ import Ent from '../../components/Ent'
 import Profile from '../../components/Profile'
 import ProfilSection from '../../components/ProfilSections'
 import ProfilSections from '../../components/ProfilSections'
+import { store } from '../store';
+import {Provider} from "react-redux";
 
-
-const user = () => {
-  return (
-    <SafeAreaView>
-      <Ent/>
-      <Profile/>
-      <ProfilSections/>
-    </SafeAreaView> 
-  )
+function App() {
+    return (
+        <SafeAreaView>
+        <Ent/>
+        <Profile/>
+        <ProfilSections/>
+        </SafeAreaView>
+    )
 }
-export default user;
+export default function user() {
+    return (
+        <Provider store={store}>
+            <App />
+        </Provider>
+    );
+};
