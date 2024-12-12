@@ -77,6 +77,22 @@ const ProfilSections = () => {
        </View>
      </View>
    </TouchableOpacity>
+     <TouchableOpacity onPress={() => router.push('/Adresses')}>
+     <View className="flex-row items-center py-4 px-4  shadow-md rounded-md">
+       <View className=" p-3 rounded-full ">
+         <FontAwesome name="shopping-cart" size={24} color="skyblue" thin />
+       </View>
+       <View className="flex-1 ml-4">
+         <Text className="text-black text-[16px] font-bold pb-0.2">Mes adresses</Text>
+         <Text className="text-gray-600 text-md">Configurez vos adresses</Text>
+       </View>
+       <View className='mr-10'>
+       </View>
+       <View>
+         <FontAwesome name="angle-right" size={24} color="gray" />
+       </View>
+     </View>
+   </TouchableOpacity>
   
  <TouchableOpacity  onPress={quitterApp}>
       <View className="flex-row items-center py-4 px-4  shadow-md rounded-md">

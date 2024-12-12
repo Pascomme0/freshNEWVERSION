@@ -9,6 +9,7 @@ import {store} from "./store";
 import axios from "axios";
 import {setToken, setUser} from "./userSlice";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import {setDetailPanier} from "./panierSlice";
 
 function LoginApp() {
   const [showPassword, setShowPassword] = useState(false);
@@ -51,6 +52,7 @@ function LoginApp() {
       setLoading(false);
     }
   };
+
 
   useEffect(() => {
 

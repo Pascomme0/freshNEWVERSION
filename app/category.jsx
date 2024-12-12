@@ -4,14 +4,17 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import Entete from '../components/Entete'
 import Back from '../components/Back'
 import Ory from '../components/Ory'
+import {Provider} from "react-redux";
+import {store} from "./store";
 const category = () => {
   return (
-    <SafeAreaView>
-        <Back/>
-        <Entete/>
-        <Ory/>
-    </SafeAreaView>
-    
+      <Provider store={store}>
+          <SafeAreaView>
+              <Back/>
+              <Entete/>
+              <Ory/>
+          </SafeAreaView>
+      </Provider>
   )
 }
 
