@@ -18,7 +18,14 @@ import {store} from "../app/store";
 import axios from "axios";
 import {setProduitsCategorie} from "../app/categorySlice";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import {setAdresse, setDetailPanier, setPaiement, setTotalLivraison} from "../app/panierSlice";
+import {
+    setActiveCommand,
+    setActivePayLink,
+    setAdresse, setClearPanier,
+    setDetailPanier,
+    setPaiement,
+    setTotalLivraison
+} from "../app/panierSlice";
 import {setPayLink, setUser} from "../app/userSlice";
 
 function RatioApp() {
@@ -47,9 +54,7 @@ function RatioApp() {
     }
 
     const resetPanier = () => {
-        dispatch(setDetailPanier([]))
-        dispatch(setAdresse(null))
-        dispatch(setTotalLivraison(0))
+        dispatch(setClearPanier())
     }
     const handleCommand = async () => {
         if (paiement) {
@@ -77,6 +82,7 @@ function RatioApp() {
                     },
                 });
                 const cmd = response.data;
+                dispatch(setActiveCommand(cmd['@id']))
                 const responseConfirmation = await axios.get(`${url}${cmd['@id']}/validate`, {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -84,15 +90,8 @@ function RatioApp() {
                 })
 
                 if (responseConfirmation.data.payLink) {
-                    // dispatch(setPayLink(responseConfirmation.data.payLink))
-                    // router.push('/GoCinetPay');
-                    const supported = await Linking.canOpenURL(responseConfirmation.data.payLink);
-
-                    if (supported) {
-                        await Linking.openURL(responseConfirmation.data.payLink);
-                    } else {
-                        Alert.alert("Erreur", "Impossible d'ouvrir la page de paiement.");
-                    }
+                    dispatch(setActivePayLink(responseConfirmation.data.payLink))
+                    router.push('/Paiement-status');
                 } else {
                     Alert.alert('Succès', 'Commande confirmée avec succès.');
                     resetPanier()

@@ -22,6 +22,7 @@ import axios from "axios";
 import * as Linking from 'expo-linking';
 import {setCategoriesVentes, setProduits} from "../app/categorySlice";
 import {setDetailPanier, pushDetailPanier, removeDetailPanier, setAdresse} from "../app/panierSlice";
+import {Pusher, PusherEvent} from "@pusher/pusher-websocket-react-native";
 
 const url = "https://admin.freshen-up.net";
 
@@ -92,18 +93,18 @@ function ProductListApp() {
     }
 
 
-    useEffect(() => {
-        const handleDeepLink = ({ url }) => {
-            const { queryParams } = Linking.parse(url);
-            console.log('Deep link data:', queryParams);
-        };
-
-        Linking.addEventListener('url', handleDeepLink);
-
-        return () => {
-            Linking.removeEventListener('url', handleDeepLink);
-        };
-    }, []);
+    // useEffect(() => {
+    //     const handleDeepLink = ({ url }) => {
+    //         const { queryParams } = Linking.parse(url);
+    //         console.log('Deep link data:', queryParams);
+    //     };
+    //
+    //     Linking.addEventListener('url', handleDeepLink);
+    //
+    //     // return () => {
+    //     //     Linking.removeEventListener('url', handleDeepLink);
+    //     // };
+    // }, []);
 
     useEffect(() => {
 

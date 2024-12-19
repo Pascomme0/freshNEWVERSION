@@ -7,6 +7,8 @@ const initialState = {
     totalHt: 0,
     paiement: null,
     totalLivraison: 0,
+    activeCommand: null,
+    activePayLink: null
     // service: {},
 };
 
@@ -64,10 +66,35 @@ const panierSlice = createSlice({
             } else {
                 state.totalLivraison = +action.payload;
             }
-        }
+        },
+        setActiveCommand: (state, action) => {
+            state.activeCommand = action.payload;
+        },
+        setActivePayLink: (state, action) => {
+            state.activePayLink = action.payload;
+        },
+        setClearPanier: (state) => {
+            state.detailPanier = [];
+            state.totalHt = 0;
+            state.totalLivraison = 0;
+            state.adresse = null;
+            state.paiement = null;
+            state.activeCommand = null;
+        },
         // reset: () => initialState,
     },
 });
 
-export const {setDetailPanier, pushDetailPanier, removeDetailPanier, updatedQuantity, setAdresse, setPaiement, setTotalLivraison} = panierSlice.actions;
+export const {
+    setDetailPanier,
+    pushDetailPanier,
+    removeDetailPanier,
+    updatedQuantity,
+    setAdresse,
+    setPaiement,
+    setTotalLivraison,
+    setActiveCommand,
+    setActivePayLink,
+    setClearPanier
+} = panierSlice.actions;
 export default panierSlice.reducer;

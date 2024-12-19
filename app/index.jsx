@@ -10,6 +10,7 @@ import {Link, useRouter} from "expo-router";
 import {Provider, useDispatch, useSelector} from "react-redux";
 import axios from "axios";
 import img from '../assets/images/LOGO.png'
+import {Pusher, PusherEvent} from "@pusher/pusher-websocket-react-native";
 
 function App() {
     const url = "https://admin.freshen-up.net";
@@ -40,6 +41,7 @@ function App() {
             dispatch(setUser(userData));
             dispatch(setToken(token));
             router.push('/service');
+            // router.push('/Paiement-status')
         } catch (error) {
             Alert.alert('Erreur', 'Identifiants invalides');
         } finally {
