@@ -8,6 +8,7 @@ export const service = [
     { id: 7, label: 'Menage et vaisselle', icon: require('../assets/images/Vaisselle.png'),lien:`../ListServices/MenLav` },
     { id: 8, label: 'lavage auto', icon: require('../assets/images/Lavageauto.png'),lien:`../ListServices/Auto` },
     { id: 9, label: 'Désinsectisation', icon: require('../assets/images/Desinsectisation.png'),lien:`../ListServices/Desinsectisation` },
+    { id: 10, label: 'Lavage à l unité', icon: require('../assets/images/Lavage.png'),lien:`../ListServices/LavageUnit` },
    
   ];
   

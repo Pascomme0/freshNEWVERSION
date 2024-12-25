@@ -22,7 +22,7 @@ const DétailsProd = () => {
   };
 
   const handleOrderService = () => {
-    router.push('/(tabs)/shop');
+    router.push('/(tabs)/shopService');
 };
 
   return (

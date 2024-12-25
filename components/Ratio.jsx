@@ -53,8 +53,9 @@ function RatioApp() {
         }).format(number);
     }
 
-    const resetPanier = () => {
+    const resetPanier = async () => {
         dispatch(setClearPanier())
+        await AsyncStorage.removeItem('panier');
     }
     const handleCommand = async () => {
         if (paiement) {
@@ -94,7 +95,7 @@ function RatioApp() {
                     router.push('/Paiement-status');
                 } else {
                     Alert.alert('Succès', 'Commande confirmée avec succès.');
-                    resetPanier()
+                    await resetPanier()
                     router.push('/(tabs)');
                 }
 

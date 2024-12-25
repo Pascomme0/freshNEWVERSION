@@ -259,7 +259,7 @@ export default function ProductDetails() {
     const decrementQuantity = () => setQuantity(prevQuantity => Math.max(1, prevQuantity - 1));
 
     const handleOrderService = () => {
-        router.push('/(tabs)/shop');
+        router.push('/(tabs)/shopService');
     };
 
     const renderStars = (rating) => {

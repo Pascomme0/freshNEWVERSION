@@ -50,7 +50,15 @@ function App() {
     };
 
     useEffect(() => {
-
+        const checkPanierService = async () => {
+            const panier = await AsyncStorage.getItem('panierService');
+            if (panier) {
+                const listPanier = JSON.parse(panier);
+            } else {
+                await AsyncStorage.setItem('panierService', JSON.stringify([]));
+            }
+        }
+        checkPanierService();
         const checkUser = async () => {
             const credentials = await AsyncStorage.getItem('credentials');
             if (credentials) {
