@@ -10,7 +10,7 @@ import DesinsectisationDetail from '../ServiceSection/DesinsectisationDetail'
 const Desinsectisation = () => {
   return (
     <SafeAreaView >
-    <Back title ='Désinfection à l unité'/>
+    <Back title ="Désinsectisation à l'unité"/>
     <ScrollView className='px-1'>
     <Entete1/>
     <DesinsectisationDetail/>

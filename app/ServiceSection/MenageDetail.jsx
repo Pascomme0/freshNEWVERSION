@@ -1,6 +1,15 @@
 // App.js
 import React, {useEffect, useState} from 'react';
-import { View, Text, Image, TouchableOpacity, ScrollView, SafeAreaView, Pressable } from 'react-native';
+import {
+    View,
+    Text,
+    Image,
+    TouchableOpacity,
+    ScrollView,
+    SafeAreaView,
+    Pressable,
+    ActivityIndicator
+} from 'react-native';
 import { styled } from 'nativewind';
 import douche from '../../assets/images/douche.jpg'
 import salon from '../../assets/images/salon.jpg'
@@ -183,47 +192,16 @@ function MenageDetailApp () {
                 </StyledButton>
             </View>
             <View className='mb-10 '>
-                <StyledView style={{ flex: 1, flexWrap: 'wrap', flexDirection: 'row' }}>
-                    {products.map(product => (
-                        <StyledView key={product.id} style={{ width: '50%' }}>
-                            <ProductCard product={product} />
-                        </StyledView>
-                    ))}
-                    <StyledView style={{ width: '50%' }}>
-                        <Link href={`/Menage/5`} asChild>
-                            <Pressable className="flex">
-                                <StyledView className="p-4 bg-white  shadow-md mb-4 w-35">
-                                    <StyledImage
-                                        source={ecole}
-                                        className="w-full h-40 rounded-lg"
-                                        resizeMode="cover"
-                                    />
-                                    <StyledText className="mt-2 text-[16px] font-bold">Ecole</StyledText>
-                                    <StyledText style={{ color: 'rgba(28, 163, 247, 1)' }} className="mt-1 text-lg">
-                                        Sur devis
-                                    </StyledText>
-                                </StyledView>
-                            </Pressable>
-                        </Link>
+                {loading ? (<ActivityIndicator className="mt-5" size="large" color="blue" />) : (
+                    <StyledView style={{ flex: 1, flexWrap: 'wrap', flexDirection: 'row' }}>
+                        {products.map(product => (
+                            <StyledView key={product.id} style={{ width: '50%' }}>
+                                <ProductCard product={product} />
+                            </StyledView>
+                        ))}
                     </StyledView>
-                    <StyledView style={{ width: '50%' }}>
-                        <Link href={`/Menage/6`} asChild>
-                            <Pressable className="flex">
-                                <StyledView className="p-4 bg-white  shadow-md mb-4 w-35">
-                                    <StyledImage
-                                        source={entreprise}
-                                        className="w-full h-40 rounded-lg"
-                                        resizeMode="cover"
-                                    />
-                                    <StyledText className="mt-2 text-[16px] font-bold">Entreprise</StyledText>
-                                    <StyledText style={{ color: 'rgba(28, 163, 247, 1)' }} className="mt-1 text-lg">
-                                        Sur devis
-                                    </StyledText>
-                                </StyledView>
-                            </Pressable>
-                        </Link>
-                    </StyledView>
-                </StyledView>
+                )}
+
             </View>
 
         </ScrollView>

@@ -3,9 +3,9 @@ import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import Entete1 from '../../components/Entete1'
 import CategoriesScreen1 from '../../components/Categories1'
-import Images from '../../components/Images'
 import ProductList1 from '../../components/ProductList1'
 import { ScrollView } from 'react-native'
+import ImagesService from "../../components/ImageService";
 
 const index = () => {
     return (
@@ -14,7 +14,7 @@ const index = () => {
             <ScrollView className='px-2 bg-white' showsHorizontalScrollIndicator={false} showsVerticalScrollIndicator={false}>
                 <Entete1 />
                 <CategoriesScreen1 />
-                <Images />
+                <ImagesService />
                 <ProductList1 />
             </ScrollView>
         </SafeAreaView>
