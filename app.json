@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Fresh",
+    "name": "Freshenup",
     "slug": "fresh",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -13,7 +13,13 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "UIBackgroundModes": [
+          "remote-notification",
+          "remote-notification"
+        ]
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -39,9 +45,14 @@
         "origin": false
       },
       "eas": {
-        "projectId": "9b4e2c48-9823-433f-bafa-f833613f8390"
+        "projectId": "cce4d37f-a766-41f0-9111-4a70e121f89a"
       }
     },
-    "owner": "pacomebrou"
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/cce4d37f-a766-41f0-9111-4a70e121f89a"
+    }
   }
 }

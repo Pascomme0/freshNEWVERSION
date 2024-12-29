@@ -140,6 +140,7 @@ function ContratsEntrePriseApp() {
         response = await axios.post(`${url}/api/documents`, {
           typeDocument: "/api/type_documents/3",
           date: (new Date()).toISOString(),
+          serviceEntreprise: selectedServiceEntreprise,
           adresse: adresse,
           dateService: dateService ? dateService.toISOString() : null,
           dateFinService: dateFin ? dateFin.toISOString() : null,

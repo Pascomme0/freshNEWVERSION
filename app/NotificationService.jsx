@@ -14,19 +14,19 @@ const NotificationIconWrapper = styled(View, 'w-6 h-6 items-center justify-cente
 const NotificationItem = ({ item, backgroundColor = 'rgba(43, 187, 104, 0.1)' }) => {
     const to = item.document.typeDocument.code === "DEMANDE_SERVICE" ? "'/ProfilePages/SuiviComService'" : "/ProfilePages/SuiviCom"
     const isService = (item.document.typeDocument.code === "DEMANDE_SERVICE");
-  return isService && (
-      <Link href={to}>
-          <Notification style={{ backgroundColor }}>
-              <NotificationIconWrapper>
-                  <FontAwesome name="bell" size={24} color="#34D399" />
-              </NotificationIconWrapper>
-              <NotificationText>{item}</NotificationText>
-          </Notification>
-      </Link>
-  );
+    return !isService && (
+        <Link href={to}>
+            <Notification style={{ backgroundColor }}>
+                <NotificationIconWrapper>
+                    <FontAwesome name="bell" size={24} color="#34D399" />
+                </NotificationIconWrapper>
+                <NotificationText>{item}</NotificationText>
+            </Notification>
+        </Link>
+    );
 };
 
-function NotificationsApp() {
+function NotificationsServiceApp() {
     const [notifications, setNotifications] = useState([])
     const user = useSelector((state) => state.user.user);
     const token = useSelector((state) => state.user.token);
@@ -53,25 +53,25 @@ function NotificationsApp() {
         init();
     }, [])
 
-  return loading ? (
-      <ActivityIndicator className="mt-5" color="blue"/>
-  ) : (
-    <View className="p-4">
-      {notifications.map((item, index) => (
-        <NotificationItem 
-          key={index} 
-          message={item}
-          backgroundColor='rgba(43, 187, 104, 0.1)' 
-        />
-      ))}
-    </View>
-  );
+    return loading ? (
+        <ActivityIndicator className="mt-5" color="blue"/>
+    ) : (
+        <View className="p-4">
+            {notifications.map((item, index) => (
+                <NotificationItem
+                    key={index}
+                    message={item}
+                    backgroundColor='rgba(43, 187, 104, 0.1)'
+                />
+            ))}
+        </View>
+    );
 };
 
-export default function Notifications() {
-  return (
-      <Provider store={store}>
-        <NotificationsApp/>
-      </Provider>
-  )
+export default function NotificationsService() {
+    return (
+        <Provider store={store}>
+            <NotificationsServiceApp/>
+        </Provider>
+    )
 };

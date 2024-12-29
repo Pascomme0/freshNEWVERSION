@@ -9,6 +9,7 @@ import {store} from "./store";
 import axios from "axios";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { setUser, setToken } from './userSlice';
+import * as Notifications from "expo-notifications";
 
 function InscriptionApp() {
   const [form, setForm] = useState({
@@ -41,6 +42,36 @@ function InscriptionApp() {
   const handleOTPChange = (value) => {
     setOtp(value);
   }
+
+  const registerForPushNotificationsAsync = async (token) => {
+    const {status: existingStatus} = await Notifications.getPermissionsAsync();
+    let finalStatus = existingStatus;
+
+    if (existingStatus !== 'granted') {
+      const {status} = await Notifications.requestPermissionsAsync();
+      finalStatus = status;
+    }
+
+    if (finalStatus !== 'granted') {
+      alert('Vous ne pourrais pas recevoir les notifications');
+      return;
+    }
+    try {
+      const tokenExpo = (await Notifications.getExpoPushTokenAsync()).data;
+      console.log(tokenExpo);
+      const response = await axios.post("https://admin.freshen-up.net/api/users/set_expo_token", {
+        expoPushToken: tokenExpo
+      }, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+    } catch (e) {
+      console.log(e);
+      Alert.alert("Erreur", "une erreur s'est produite")
+    }
+
+  };
 
   const handleRegistration = async () => {
     setLoading(true);
@@ -84,6 +115,7 @@ function InscriptionApp() {
       dispatch(setUser(userData));
 
       // Rediriger vers /(tabs)
+      await registerForPushNotificationsAsync(token);
       router.push('/service');
     } catch (error) {
       Alert.alert('Erreur', 'Identifiants invalides');
