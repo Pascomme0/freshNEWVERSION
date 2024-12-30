@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Image, ScrollView, TouchableOpacity } from 'react-native';
 import { styled } from 'nativewind';
-import nounou from '../../assets/images/vaisselle.jpg';
+import nounou from '../../assets/images/vaisselle1.jpg';
 import { Link } from 'expo-router';
 import { useRouter } from 'expo-router';
 import TotalEvent from '../ServiceSection/TotalEvent';
