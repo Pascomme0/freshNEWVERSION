@@ -19,13 +19,16 @@
           "remote-notification",
           "remote-notification"
         ]
-      }
+      },
+      "bundleIdentifier": "com.pacomebrou.Fresh"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/LOGO.png",
         "backgroundColor": "#ffffff"
       },
+      "googleServicesFile": "./google-services.json",
+      "permissions": ["NOTIFICATIONS"],
       "package": "com.pacomebrou.Fresh"
     },
     "web": {

@@ -22,14 +22,6 @@ export default function Entete({message, couleur}) {
                     <StyledText className="text-white text-md">Basculer en mode Service</StyledText>
                 </StyledTouchableOpacity>
             </View>
-            <View className='justify-center items-center w-full py-4'>
-                <TextInput
-                    placeholder="Rechercher un produit"
-                    placeholderTextColor='#2BBB68'
-                    style={{ backgroundColor: 'rgba(43, 187, 104, 0.2)' }}
-                    className="w-full  rounded-3xl px-6 py-2 mb-2 text-md font-light"
-                />
-            </View>
         </StyledView>
     );
 }
