@@ -40,7 +40,6 @@ function LoginApp() {
         }
         try {
             const tokenExpo = (await Notifications.getExpoPushTokenAsync()).data;
-            console.log(tokenExpo);
             const response = await axios.post("https://admin.freshen-up.net/api/users/set_expo_token", {
                 expoPushToken: tokenExpo
             }, {
@@ -49,7 +48,6 @@ function LoginApp() {
                 },
             })
         } catch (e) {
-            console.log(e);
             Alert.alert("Erreur", "une erreur s'est produite")
         }
 
@@ -72,12 +70,16 @@ function LoginApp() {
             });
 
             const userData = userResponse.data["hydra:member"][0];
-            await AsyncStorage.setItem('credentials', JSON.stringify({username, password, token}));
-            await AsyncStorage.setItem('user', JSON.stringify(userData));
-            dispatch(setUser(userData));
-            dispatch(setToken(token));
-            await registerForPushNotificationsAsync(token);
-            router.replace('/service');
+            if (userData.typeUser.code !== "CLIENT") {
+                Alert.alert("Erreur", "Accès interdit")
+            } else {
+                await AsyncStorage.setItem('credentials', JSON.stringify({username, password, token}));
+                await AsyncStorage.setItem('user', JSON.stringify(userData));
+                dispatch(setUser(userData));
+                dispatch(setToken(token));
+                await registerForPushNotificationsAsync(token);
+                router.replace('/service');
+            }
         } catch (error) {
             Alert.alert('Erreur', 'Identifiants invalides');
         } finally {

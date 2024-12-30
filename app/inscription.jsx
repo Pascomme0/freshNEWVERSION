@@ -58,7 +58,6 @@ function InscriptionApp() {
     }
     try {
       const tokenExpo = (await Notifications.getExpoPushTokenAsync()).data;
-      console.log(tokenExpo);
       const response = await axios.post("https://admin.freshen-up.net/api/users/set_expo_token", {
         expoPushToken: tokenExpo
       }, {
@@ -67,7 +66,6 @@ function InscriptionApp() {
         },
       })
     } catch (e) {
-      console.log(e);
       Alert.alert("Erreur", "une erreur s'est produite")
     }
 

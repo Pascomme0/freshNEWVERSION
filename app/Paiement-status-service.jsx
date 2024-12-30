@@ -77,7 +77,6 @@ function LoadingScreenApp() {
                     Authorization: `Bearer ${token}`,
                 },
             });
-            console.log(commande.data.paiement.statusPay);
             if (commande.data.paiement.statusPay === 'PAID') {
                 setIsSuccess(true);
                 setIsLoading(false);
@@ -104,7 +103,6 @@ function LoadingScreenApp() {
             clearInterval(intervalRef.current); // Arrête la boucle une fois le succès atteint
         }, 2000); // Intervalle de 2 seconde
         const supported = await Linking.canOpenURL(payLink);
-        console.log(supported);
         if (supported) {
             await Linking.openURL(payLink);
         } else {

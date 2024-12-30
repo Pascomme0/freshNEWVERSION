@@ -11,16 +11,21 @@ const Notification = styled(View, 'flex-row items-center p-4 rounded-lg mb-3');
 const NotificationText = styled(Text, 'ml-2 text-green-700');
 const NotificationIconWrapper = styled(View, 'w-6 h-6 items-center justify-center');
 
-const NotificationItem = ({ item, backgroundColor = 'rgba(43, 187, 104, 0.1)' }) => {
-    const to = item.document.typeDocument.code === "DEMANDE_SERVICE" ? "'/ProfilePages/SuiviComService'" : "/ProfilePages/SuiviCom"
-    const isService = (item.document.typeDocument.code === "DEMANDE_SERVICE");
+// NotificationItem component
+const NotificationItem = ({ item }) => { // Destructure "item" directly from props
+    const to = item?.document?.typeDocument?.code === "DEMANDE_SERVICE"
+        ? "/ProfilePages/SuiviComService"
+        : "/ProfilePages/SuiviCom";
+    const isService = item?.document?.typeDocument?.code === "DEMANDE_SERVICE";
+    const backgroundColor = 'rgba(43, 187, 104, 0.1)';
+
     return !isService && (
         <Link href={to}>
             <Notification style={{ backgroundColor }}>
                 <NotificationIconWrapper>
                     <FontAwesome name="bell" size={24} color="#34D399" />
                 </NotificationIconWrapper>
-                <NotificationText>{item}</NotificationText>
+                <NotificationText>{item?.message}</NotificationText>
             </Notification>
         </Link>
     );
@@ -54,14 +59,13 @@ function NotificationsServiceApp() {
     }, [])
 
     return loading ? (
-        <ActivityIndicator className="mt-5" color="blue"/>
+        <ActivityIndicator className="mt-5" color="blue" />
     ) : (
         <View className="p-4">
-            {notifications.map((item, index) => (
+            {notifications.map((item) => (
                 <NotificationItem
-                    key={index}
-                    message={item}
-                    backgroundColor='rgba(43, 187, 104, 0.1)'
+                    key={item.id}
+                    item={item} // Pass the item as a prop
                 />
             ))}
         </View>

@@ -119,7 +119,6 @@ function MenageDetailApp () {
         const initialize = async () => {
             setLoading(true);
             const response = await axios.get(url + "/api/produits?isVente=0&priceProduits.service=/api/services/2");
-            // console.log(response.data["hydra:member"])
             setProducts(response.data["hydra:member"]);
             setLoading(false);
         }

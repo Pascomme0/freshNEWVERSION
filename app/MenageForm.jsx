@@ -176,7 +176,6 @@ function ContratsEntrePriseApp() {
         }
 
       } catch (AxiosError) {
-        console.log(AxiosError)
         Alert.alert('Erreur', 'Erreur lors de la commande');
       } finally {
         setLoadingConf(false);

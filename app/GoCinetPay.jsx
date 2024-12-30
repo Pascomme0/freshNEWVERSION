@@ -38,16 +38,13 @@ function PaymentScreen() {
                 onLoadEnd={() => setLoading(false)}
                 onShouldStartLoadWithRequest={(request) => {
                     if (request.url.includes("SUCCESS")) {
-                        console.log("Paiement réussi :", request.url);
                         handleSuccess(request.url);
                         return false;
                     } else if (request.url.includes("ERROR")) {
-                        console.log("Paiement échoué :", request.url);
                         handleFailure(request.url);
                         return false;
                     }
                     else if (request.url.includes("CANCELED")) {
-                        console.log("Paiement échoué :", request.url);
                         handleFailure(request.url);
                         return false;
                     }

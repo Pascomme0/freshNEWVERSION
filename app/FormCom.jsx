@@ -131,7 +131,6 @@ function FormComApp() {
       const dateService = pickupDateTime ? null : serviceDateTime;
       const dateRetour = pickupDateTime ? serviceDateTime : null;
       let det = [];
-      // console.log(this.panier.detailDocuments);
       for (let i = 0; i < detailPanier.length; i++) {
         det.push({
           produit: detailPanier[i].produit?.['@id'],
@@ -204,7 +203,6 @@ function FormComApp() {
         }
 
       } catch (AxiosError) {
-        console.log(AxiosError)
         Alert.alert('Erreur', 'Erreur lors de l\'ajout de l\'adresse');
       } finally {
         setLoadingConf(false);

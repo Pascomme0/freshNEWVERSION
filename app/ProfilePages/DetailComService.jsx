@@ -86,7 +86,6 @@ function DetailComServiceApp() {
             Alert.alert("Succès", "Devis Accepté")
             router.push('/(tabs2)')
         } catch (AxiosError) {
-            console.log(AxiosError)
             Alert.alert('Erreur', 'Erreur lors de la commande');
         } finally {
             setLoadingAccept(false);
@@ -116,7 +115,6 @@ function DetailComServiceApp() {
                             Alert.alert("Succès", "Commande annulée");
                             router.push('/(tabs2)');
                         } catch (AxiosError) {
-                            console.log(AxiosError);
                             Alert.alert('Erreur', "Erreur lors de l'annulation");
                         } finally {
                             setLoadingAccept(false);

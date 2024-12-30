@@ -46,7 +46,6 @@ function NoterServiceApp() {
                 Alert.alert("Succès", "Merci de votre coopération")
                 router.push('/(tabs2)')
             } catch (AxiosError) {
-                console.log(AxiosError)
                 Alert.alert('Erreur', "Erreur lors de l'évaluation");
             } finally {
                 setLoadingConf(false);
