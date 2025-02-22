@@ -7,7 +7,7 @@ import TotalEventComponent from '../../components/TotalEventComponent'
 const TotalEvent = () => {
   return (
     <SafeAreaView>
-      <Back title='contrat de cuisine'/>
+      <Back title='Service après un évènement'/>
       <TotalEventComponent/>
     </SafeAreaView>
   )

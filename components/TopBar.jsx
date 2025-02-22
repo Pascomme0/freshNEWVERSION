@@ -3,12 +3,20 @@ import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { useRouter } from 'expo-router';
 import Icon from 'react-native-vector-icons/Ionicons'; // Bibliothèque pour les icônes
 
-export default function TopBar({ title }) {
+export default function TopBar({ title, retPage = null }) {
     const router = useRouter();
+
+    const handleBack = (page) => {
+        if (page) {
+            router.push(page);
+        } else {
+            router.back();
+        }
+    }
 
     return (
         <View style={styles.container}>
-            <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
+            <TouchableOpacity onPress={() => handleBack(retPage)} style={styles.backButton}>
                 <Icon name="arrow-back" size={24} color="#000" />
             </TouchableOpacity>
             <Text style={styles.title}>{title}</Text>

@@ -95,20 +95,83 @@ function ContratsEntrePriseApp() {
     hideDatePicker();
   };
 
-  const validate = () => {
-    if (!nombreEnfants || !dateDebut || !adresse) {
-      return false;
-    } else if (frequence === 'autre' && !autreDuree) {
-      return false;
-    } else if (heureFixe && !heure && !heureFin) {
-      return false;
-    } else if (heure > heureFin) {
-      return false;
-    } else if (dateFin && dateDebut > dateFin) {
+  const validateSimpleDate = (inputDate) => {
+
+    const now = new Date();
+    const tomorrow = new Date(
+        now.getFullYear(),
+        now.getMonth(),
+        now.getDate() + 1
+    );
+
+    if (inputDate < tomorrow) {
+      Alert.alert("Erreur", 'La date doit être au moins demain.');
       return false;
     }
     return true;
   };
+
+  const validateDateTime = (inputDateTime) => {
+
+    const now = new Date();
+    const tomorrowAt8AM = new Date(
+        now.getFullYear(),
+        now.getMonth(),
+        now.getDate() + 1,
+        8, 0, 0, 0
+    );
+
+    if (inputDateTime < tomorrowAt8AM) {
+      Alert.alert("Erreur", 'La date et l’heure doivent être au moins demain à 8h00.');
+      return false;
+    }
+
+    const hours = inputDateTime.getHours();
+    if (hours < 8 || hours >= 17) {
+      Alert.alert("Erreur", 'L’heure doit être entre 08:00 et 17:00.');
+      return false;
+    }
+    return true;
+  };
+
+  const validateHour = (timeInput) => {
+
+    const [hours, minutes] = timeInput.split(':').map(Number);
+
+    // Plage horaire : 08:00 - 17:00 (exclus)
+    if (hours < 8 || hours >= 17) {
+      Alert.alert("Erreur",'L’heure doit être entre 08:00 et 17:00.');
+      return false;
+    }
+    return true;
+  }
+
+  const validate = () => {
+    if (!nombreEnfants || !dateDebut || !adresse) {
+      Alert.alert("Erreur", "la date de debut et l'adresse et le nombre de pieces sont requise")
+      return false;
+    } else if (frequence === 'autre' && !autreDuree) {
+      Alert.alert("Erreur", "Veuillez précisez la fréquence de travail")
+      return false;
+    } else if (heureFixe && !heure && !heureFin) {
+      Alert.alert("Erreur", "Veuillez précisez les heures de travail")
+      return false;
+    } else if (heure >= heureFin) {
+      Alert.alert("Erreur", "l'heure de fin ne dois pas être inférieur à l'heure de debut")
+      return false;
+    } else if (dateFin && dateDebut > dateFin) {
+      Alert.alert("Erreur", "la date de fin doit être supérieur à la date de debut")
+      return false;
+    } else if (dateFin && !validateSimpleDate(dateFin)) {
+      return false;
+    } else if (!validateSimpleDate(dateDebut)) {
+      return false;
+    } else if(heure && heureFin && !validateHour(heure) && !validateHour(heureFin)) {
+      return false;
+    }
+    return true;
+  };
+
 
   const showTimePicker = (field) => {
     setPickerField(field);
@@ -180,8 +243,6 @@ function ContratsEntrePriseApp() {
       } finally {
         setLoadingConf(false);
       }
-    } else {
-      Alert.alert("Erreur", "Une erreur s'est produite ")
     }
   };
 

@@ -31,8 +31,58 @@ function InscriptionApp() {
   const dispatch = useDispatch();
   const router = useRouter();
 
-  const validator = () => {
-    return form.email && form.nom && form.prenoms && form.telephone && form.password && form.confirmPassword && (form.password === form.confirmPassword);
+  const verifyUnicity = async (value) => {
+    try {
+      const response = await axios.post(url + "/api/users/verify_unicity", value);
+      if (response.data["error"]) {
+        Alert.alert('Erreur', response.data["message"])
+      }
+      return Boolean(response.data["error"]);
+    } catch (e) {
+      Alert.alert('Erreur', "Problème de connexion")
+      return true
+    }
+
+  }
+
+  const validator = async () => {
+    setLoading(true);
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(form.email)) {
+      Alert.alert("Erreur",'Veuillez entrer une adresse email valide.');
+      setLoading(false);
+      return false
+    }
+    const phoneRegex = /^\d{10}$/;
+    if (!phoneRegex.test(form.telephone)) {
+      Alert.alert("Erreur",'Veuillez entrer un numéro de téléphone valide');
+      setLoading(false);
+      return false
+    }
+    if (form.password !== form.confirmPassword) {
+      Alert.alert("Erreur", 'Les mots de passe doivent être identique')
+      setLoading(false);
+      return false
+    }
+    if (!form.email || !form.nom || !form.prenoms || !form.telephone || !form.password || !form.confirmPassword){
+      Alert.alert("Erreur", 'Tous les champs sont requis')
+      setLoading(false);
+      return false
+    }
+    if (await verifyUnicity({email: form.email})) {
+      setLoading(false);
+      return false
+    }
+    if (await verifyUnicity({username: form.email})) {
+      setLoading(false);
+      return false
+    }
+    if (await verifyUnicity({phone: form.telephone})) {
+      setLoading(false);
+      return false
+    }
+    setLoading(false);
+    return true
   };
 
   const handlePage = (value) => {
@@ -72,22 +122,24 @@ function InscriptionApp() {
   };
 
   const handleRegistration = async () => {
-    setLoading(true);
-    try {
-      await axios.post(url + '/api/users', {
-        'username': form.email,
-        'email': form.email,
-        'plainPassword': form.password,
-        'phone': form.telephone,
-        'firstName': form.prenoms,
-        'lastName': form.nom,
-        'typeUser': "/api/type_users/3"
-      });
-      setPage('OTP');
-    } catch (error) {
-      Alert.alert('Erreur', 'Une erreur s\'est produite dans le traitement');
-    } finally {
-      setLoading(false);
+    if (await validator()) {
+      setLoading(true);
+      try {
+        await axios.post(url + '/api/users', {
+          'username': form.email,
+          'email': form.email,
+          'plainPassword': form.password,
+          'phone': form.telephone,
+          'firstName': form.prenoms,
+          'lastName': form.nom,
+          'typeUser': "/api/type_users/3"
+        });
+        setPage('OTP');
+      } catch (error) {
+        Alert.alert('Erreur', 'Une erreur s\'est produite dans le traitement');
+      } finally {
+        setLoading(false);
+      }
     }
   };
 
@@ -136,9 +188,32 @@ function InscriptionApp() {
     }
   }
 
+  async function handleCancel(username) {
+    setLoading(true);
+    try {
+      const response = await axios.post('https://admin.freshen-up.net/api/users/cancel', {
+        'username': username
+      });
+
+      setPage('REGISTER');
+    } catch (error) {
+      Alert.alert('Erreur', "Une erreur s'est produite vérifier votre connexion internet");
+    } finally {
+      setLoading(false);
+    }
+  }
+
   const renderOTPPage = () => {
     return (
         <View className="w-full space-y-4">
+
+          <Text style={{textAlign: 'center', marginBottom: 24}}>
+            Un code a été par sms au {form.telephone}, Ce n'est pas le votre ? <Text style={{color: '#007AFF', fontWeight: 'bold'}}
+                                                                                     onPress={() => handleCancel(form.email)}>
+            Modifier mon numéro
+          </Text>
+          </Text>
+
           <TextInput
               placeholder="Entrez votre code"
               className="w-full bg-gray-100 rounded-md p-4 text-base"
@@ -157,6 +232,10 @@ function InscriptionApp() {
               )
             }
           </TouchableOpacity>
+
+          {/*<TouchableOpacity>*/}
+          {/*  <Text className="text-right text-blue-500">Mot de passe oublié?</Text>*/}
+          {/*</TouchableOpacity>*/}
         </View>
     );
   };

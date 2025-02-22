@@ -1,6 +1,6 @@
 // IncompleteInfoCard.js
 import React from 'react';
-import {View, Text, TouchableOpacity, BackHandler, Platform, Alert} from 'react-native';
+import {View, Text, TouchableOpacity, BackHandler, Platform, Alert, StyleSheet} from 'react-native';
 import {useRouter} from 'expo-router';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -64,6 +64,7 @@ function ProfilSectionsServiceApp() {
                     </View>
                 </View>
             </TouchableOpacity>
+
             <TouchableOpacity onPress={() => router.push('/ProfilePages/SuiviComService')}>
                 <View className="flex-row items-center py-4 px-4  shadow-md rounded-md">
                     <View className=" p-3 rounded-full ">
@@ -84,7 +85,7 @@ function ProfilSectionsServiceApp() {
             <TouchableOpacity onPress={() => router.push('/Adresses')}>
                 <View className="flex-row items-center py-4 px-4  shadow-md rounded-md">
                     <View className=" p-3 rounded-full ">
-                        <FontAwesome name="shopping-cart" size={24} color="skyblue" thin />
+                        <FontAwesome name="shopping-cart" size={24} color="skyblue" thin/>
                     </View>
                     <View className="flex-1 ml-4">
                         <Text className="text-black text-[16px] font-bold pb-0.2">Mes adresses</Text>
@@ -93,11 +94,29 @@ function ProfilSectionsServiceApp() {
                     <View className='mr-10'>
                     </View>
                     <View>
-                        <FontAwesome name="angle-right" size={24} color="gray" />
+                        <FontAwesome name="angle-right" size={24} color="gray"/>
                     </View>
                 </View>
             </TouchableOpacity>
 
+            <TouchableOpacity onPress={() => router.push('/Justificatifs')}>
+                <View style={styles.card}>
+                    <View style={styles.iconContainer}>
+                        <FontAwesome name="user" size={24} color="skyblue"/>
+                    </View>
+                    <View style={styles.textContainer}>
+                        <Text style={styles.title}>Mon Compte</Text>
+                        <Text style={styles.subtitle}>vérifier votre statut</Text>
+                    </View>
+                    <View style={styles.warningIcon}>
+                        <FontAwesome name="exclamation" size={24} color="red" light/>
+                    </View>
+                    <View>
+                        <FontAwesome name="angle-right" size={24} color="gray"/>
+                    </View>
+                </View>
+            </TouchableOpacity>
+            
             <TouchableOpacity onPress={quitterApp}>
                 <View className="flex-row items-center py-4 px-4  shadow-md rounded-md">
                     <View className=" p-3 rounded-full ">
@@ -126,3 +145,45 @@ export default function ProfilSectionsService() {
         </Provider>
     )
 };
+
+const styles = StyleSheet.create({
+    container: {
+        marginTop: 32,
+        backgroundColor: 'white',
+    },
+    innerContainer: {
+        marginTop: 24,
+        height: '100%',
+    },
+    card: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        paddingVertical: 16,
+        paddingHorizontal: 16,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 1 },
+        shadowOpacity: 0.2,
+        shadowRadius: 1.41,
+        borderRadius: 8,
+    },
+    iconContainer: {
+        padding: 12,
+        borderRadius: 50,
+    },
+    textContainer: {
+        flex: 1,
+        marginLeft: 16,
+    },
+    title: {
+        color: 'black',
+        fontSize: 16,
+        fontWeight: 'bold',
+    },
+    subtitle: {
+        color: 'gray',
+        fontSize: 14,
+    },
+    warningIcon: {
+        marginRight: 40,
+    },
+});

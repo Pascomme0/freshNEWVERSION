@@ -10,6 +10,7 @@ import {store} from "../app/store";
 
 const ProfileApp = () => {
     const [image, setImage] = useState(null);
+    const [imageUri, setImageUri] = useState(null);
     const [url, setUrl] = useState('https://admin.freshen-up.net');
     const [loadingImage, setLoadingImage] = useState(false);
     const user = useSelector((state) => state.user.user);
@@ -31,9 +32,13 @@ const ProfileApp = () => {
         });
 
         if (!result.canceled) {
-            const { uri, type, fileName } = {uri: result.assets[0].uri, type: result.assets[0].mimeType, fileName: result.assets[0].fileName};
-            setImage({ uri, type, fileName });
-            await uploadImageProfile(image);
+            const newImage = {
+                uri: result.assets[0].uri,
+                type: result.assets[0].mimeType,
+                fileName: result.assets[0].fileName
+            };
+            setImageUri(newImage);
+            uploadImageProfile(newImage);
         }
     };
 
@@ -58,6 +63,7 @@ const ProfileApp = () => {
             const userData = response.data;
             await AsyncStorage.setItem('user', JSON.stringify(userData));
             dispatch(setUser(userData));
+            Alert.alert("Succès", "votre profil a été mis à jour")
         } catch (error) {
             console.log(error);
             Alert.alert("Erreur", "Une erreur s'est produite lors de la mise à jour de votre photo de profil");
@@ -68,14 +74,10 @@ const ProfileApp = () => {
     return (
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', paddingTop: 14, paddingBottom:10}}>
             <View style={{ position: 'relative' }}>
-                {loadingImage ? (
-                    <ActivityIndicator size="large" color="#0000ff" />
-                ) : (
-                    <Image
-                        source={user?.profileImagePath ? { uri: url + user.profileImagePath } : { uri: 'https://ui-avatars.com/api?background=random&name=' + user?.firstName + '+' + user?.lastName }}
-                        style={{ width: 96, height: 96, borderRadius: 48 }}
-                    />
-                )}
+                <Image
+                    source={imageUri ? { uri: imageUri.uri } : user?.profileImagePath ? { uri: url + user.profileImagePath } : { uri: 'https://ui-avatars.com/api?background=random&name=' + user?.firstName + '+' + user?.lastName }}
+                    style={{ width: 96, height: 96, borderRadius: 48 }}
+                />
                 <TouchableOpacity 
                     style={{ position: 'absolute', bottom: 0, right: 0, backgroundColor: 'green', padding: 8, borderRadius: 16 }}
                     onPress={pickImage}

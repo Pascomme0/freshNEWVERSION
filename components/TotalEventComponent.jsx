@@ -23,6 +23,29 @@ const formatDateTime = (datetime) => {
         : 'Choisir une date et une heure';
 };
 
+const validateDateTime = (inputDateTime) => {
+
+    const now = new Date();
+    const tomorrowAt8AM = new Date(
+        now.getFullYear(),
+        now.getMonth(),
+        now.getDate() + 1,
+        8, 0, 0, 0
+    );
+
+    if (inputDateTime < tomorrowAt8AM) {
+        Alert.alert("Erreur", 'La date et l’heure doivent être au moins demain à 8h00.');
+        return false;
+    }
+
+    const hours = inputDateTime.getHours();
+    if (hours < 8 || hours >= 17) {
+        Alert.alert("Erreur", 'L’heure doit être entre 08:00 et 17:00.');
+        return false;
+    }
+    return true;
+};
+
 const isWeekend = (date) => {
     const day = date.getDay();
     return day === 0 || day === 6; // 0 = dimanche, 6 = samedi
@@ -109,6 +132,10 @@ function TotalEventComponentApp () {
     // Fonction de validation
     const validate = () => {
         if (!numberOfPlaces || !datetime || !selectedAddress || !selectedServiceType) {
+            Alert.alert("Erreur", "Tous les champs sont requis")
+            return false;
+        }
+        if (!validateDateTime(datetime)) {
             return false;
         }
         return true;
@@ -167,8 +194,6 @@ function TotalEventComponentApp () {
             } finally {
                 setLoadingConf(false);
             }
-        } else {
-            Alert.alert('Erreur', 'Veuillez remplir tous les champs avant de valider.');
         }
     };
 

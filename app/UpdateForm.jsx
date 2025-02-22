@@ -98,8 +98,27 @@ function ContratsApp() {
         hideDatePicker();
     };
 
+    const validateSimpleDate = (inputDate) => {
+
+        const now = new Date();
+        const tomorrow = new Date(
+            now.getFullYear(),
+            now.getMonth(),
+            now.getDate() + 1
+        );
+
+        if (inputDate < tomorrow) {
+            Alert.alert("Erreur", 'La date doit être au moins demain.');
+            return false;
+        }
+        return true;
+    };
+
     const validate = () => {
         if (!dateDebut) {
+            Alert.alert("Erreur", 'La date de debut est requise')
+            return false;
+        } else if (!validateSimpleDate(dateDebut)){
             return false;
         }
         return true;

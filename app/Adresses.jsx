@@ -55,7 +55,7 @@ function AdressesApp() {
 
     return (
         <View style={styles.container}>
-            <TopBar title="Liste des Adresses" />
+            <TopBar title="Liste des Adresses" retPage="/(tabs2)" />
             {addresses.length === 0 ? (<Text style={{alignSelf:"center", verticalAlign:"middle"}}>Aucune adresse</Text>) :
                 (
                     <FlatList
