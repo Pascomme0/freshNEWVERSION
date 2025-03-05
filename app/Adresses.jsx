@@ -46,6 +46,7 @@ const styles = StyleSheet.create({
 function AdressesApp() {
     const dispatch = useDispatch();
     const user = useSelector((state) => state.user.user);
+    const activeMenu = useSelector((state) => state.user.activeMenu);
 
     const [addresses, setAddresses] = useState([]);
 
@@ -55,7 +56,7 @@ function AdressesApp() {
 
     return (
         <View style={styles.container}>
-            <TopBar title="Liste des Adresses" retPage="/(tabs2)" />
+            <TopBar title="Liste des Adresses" retPage={activeMenu} />
             {addresses.length === 0 ? (<Text style={{alignSelf:"center", verticalAlign:"middle"}}>Aucune adresse</Text>) :
                 (
                     <FlatList

@@ -4,7 +4,8 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
     user: null,
     token: null,
-    payLink: null
+    payLink: null,
+    activeMenu: null,
 };
 
 const userSlice = createSlice({
@@ -19,10 +20,13 @@ const userSlice = createSlice({
         },
         setPayLink: (state, action) => {
             state.payLink = action.payload;
+        },
+        setActiveMenu: (state, action) => {
+            state.activeMenu = action.payload;
         }
         // reset: () => initialState,
     },
 });
 
-export const { setUser, setToken, setPayLink } = userSlice.actions;
+export const { setUser, setToken, setPayLink, setActiveMenu } = userSlice.actions;
 export default userSlice.reducer;

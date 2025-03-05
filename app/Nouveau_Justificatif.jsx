@@ -28,6 +28,7 @@ const AddScreenApp = () => {
     const [verso, setVerso] = useState(null);
     const dispatch = useDispatch();
     const user = useSelector((state) => state.user.user);
+    const activeMenu = useSelector((state) => state.user.activeMenu);
     const token = useSelector((state) => state.user.token);
     const url = 'https://admin.freshen-up.net';
     const [isLoading, setIsLoading] = useState(false);
@@ -114,7 +115,7 @@ const AddScreenApp = () => {
                     await AsyncStorage.setItem('user', JSON.stringify(userData));
                     dispatch(setUser(userData));
                     Alert.alert("Succès", "Justificatifs mis à jour")
-                    router.push('/(tabs)')
+                    router.push(activeMenu)
                 } catch (error) {
                     Alert.alert('Erreur', 'Une erreur s\'est produite lors de l\'ajout du justificatif');
                 }

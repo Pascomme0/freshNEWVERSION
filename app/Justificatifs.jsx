@@ -9,6 +9,7 @@ const JustificatifsApp = () => {
     const dispatch = useDispatch();
     const user = useSelector((state) => state.user.user);
     const token = useSelector((state) => state.user.token);
+    const activeMenu = useSelector((state) => state.user.activeMenu);
     const url = 'https://admin.freshen-up.net';
     const [isLoading, setIsLoading] = useState(false);
     const [items, setItems] = useState([]);
@@ -29,7 +30,7 @@ const JustificatifsApp = () => {
 
     return (
         <View style={styles.container}>
-            <TopBar title="Liste des Justificatifs" retPage="/(tabs)" />
+            <TopBar title="Liste des Justificatifs" retPage={activeMenu} />
             {items?.length === 0 && <Text style={{alignSelf:"center", verticalAlign:"middle"}}>Aucun justificatif</Text>}
             <FlatList
                 data={items}

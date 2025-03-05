@@ -94,7 +94,7 @@ function RatioApp() {
                     dispatch(setActivePayLink(responseConfirmation.data.payLink))
                     router.push('/Paiement-status');
                 } else {
-                    Alert.alert('Succès', 'Commande confirmée avec succès.');
+                    Alert.alert('Succès', 'Commande confirmée avec succès. Vous pouvez consultez l\'etat de vos commandes dans l\'onglet utilisateur.');
                     await resetPanier()
                     router.push('/(tabs)');
                 }

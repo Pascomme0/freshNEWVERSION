@@ -279,7 +279,7 @@ function FormComApp() {
                         dispatch(setActivePayLink(responseConfirmation.data.payLink))
                         router.push('/Paiement-status-service');
                     } else {
-                        Alert.alert('Succès', 'Commande confirmée avec succès.');
+                        Alert.alert('Succès', 'Commande confirmée avec succès, nous vous attribuerons un agent sous peu. Vous pouvez consultez l\'etat de vos demandes dans l\'onglet utilisateur.' );
                         resetPanier()
                         router.push('/(tabs2)');
                     }
